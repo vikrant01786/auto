@@ -1,0 +1,44 @@
+.hed1{
+    color:#e7171f;
+    font-size: 40px;
+}
+
+
+.hed2{
+color:#ff1f3f;
+font-size: 30px;
+}
+.head{
+    background-color: #e72128;
+    font-size: 20px;
+    color:white;
+}
+.border1{
+    border: 1px solid black;
+    box-shadow: 8px 5px 60px  #888888;
+}
+.insp{
+    background-color: #e72128;
+    color:white;
+}
+.back
+{
+    background-color: #ffff !important;
+}
+.snow{
+    background-color: #f9f9f9;
+}
+.white{
+    background-color: #ffffff;
+}
+
+h6{
+   
+    padding-top: 7px !important;
+}
+
+h3
+    {
+   
+        padding-top: 7px !important;
+    } 

@@ -1,0 +1,13 @@
+
+.amit {
+    color: blue;
+}
+::placeholder{
+    font-size: 10px !important;
+}
+.nav-item:hover {
+    cursor: pointer;
+}
+.iconshover i:hover {
+    cursor: pointer;
+}

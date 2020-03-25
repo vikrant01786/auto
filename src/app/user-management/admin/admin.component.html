@@ -1,0 +1,417 @@
+<div class="container-fluid border border-dark">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>User Management</h5>
+
+        </div>
+        <div class="col-md-6">
+            <div class="float-right">
+                <label class="amit">User Management</label>
+                <label>/Admin </label>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+
+    <div class="card border">
+
+        <div class="card-header">
+            <button class="btn btn-success float-right" routerLink="/user-management/user-list"> <i class="fas fa-clipboard-list"></i>&nbsp;&nbsp; User List</button>
+        </div>
+        <br>
+        <div class="container">
+            <form class="user-form" #userForm="ngForm" (ngSubmit)="saveUser(); userForm.reset()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Enter  Name <b class="text-danger" >*</b></label>
+                            </div>
+                            <div class="col-lg-5">
+                                <input class="form-control" required name="Name" [(ngModel)]="user.Name" type="text"
+                                    placeholder="Enter the  name" autocomplete="off" #userName="ngModel"
+                                    [class.is-invalid]="userName.invalid && userName.touched" minlength="4"
+                                    [class.is-valid]="userName.valid">
+                                <div *ngIf="userName.errors && (userName.invalid && userName.touched)">
+                                    <small class="text-danger" *ngIf="userName?.errors.required">UserName is
+                                        required</small>
+                                    <small class="text-danger" *ngIf=userName?.errors.minlength>Name Should Be Atleast 3
+                                        Characters</small>
+                                </div>
+                            </div>
+                        </div>
+
+
+                           <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <input class="form-control" required name="Address" [(ngModel)]="user.Address" type="text"
+                                placeholder="Enter the Address" autocomplete="off" #Address="ngModel" [class.is-valid]=" Address.touched">
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Email address<b class="text-danger" >*</b></label>
+                            </div>
+                            <div class="col-md-5 form-group">
+
+                                <input required type="email" class="form-control " placeholder="Email address"
+                                    name="Email" id="Email" #userEmail="ngModel" [(ngModel)]="user.Email"
+                                    autocomplete="off" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                                    [class.is-invalid]="userEmail.invalid && userEmail.touched"
+                                    (keydown.space)="$event.preventDefault();"
+                                    [class.is-valid]="userEmail.valid && userEmail.touched">
+                                <div *ngIf="userEmail.errors && (userEmail.invalid && userEmail.touched)">
+                                    <small class="text-danger" *ngIf="userEmail?.errors.required">Email is
+                                        Required</small>
+                                    <small class="text-danger" *ngIf="userEmail?.errors.pattern">Please Enter Valid
+                                        Email</small>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Password<b class="text-danger" >*</b></label>
+                            </div>
+                            <div class="col-md-5 form-group">
+
+                                <input type="password" class="form-control" placeholder="Enter Password" name="Password"
+                                    id="Password" [(ngModel)]="user.Password" autocomplete="off" required minlength="5"
+                                    #UserPassword="ngModel" (keydown.space)="$event.preventDefault();"
+                                    [class.is-invalid]="UserPassword.invalid && UserPassword.touched"
+                                    [class.is-valid]="UserPassword.valid">
+
+                                <div *ngIf="UserPassword.errors && (UserPassword.invalid && UserPassword.touched)">
+                                    <small class="text-danger" *ngIf=UserPassword?.errors.required>Password is
+                                        Required</small>
+                                    <small class="text-danger" *ngIf=UserPassword?.errors.minlength>Password Should Be
+                                        Atleast 5 Characters</small>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Mobile Number<b class="text-danger" >*</b></label>
+                            </div>
+                            <div class="col-lg-5">
+
+                                <input type="text" class="form-control" placeholder="Enter 10 digit Phone No."
+                                    name="MobileNo" id="MobileNo" #UserPhone="ngModel" [(ngModel)]="user.MobileNo"
+                                    autocomplete="off" (keypress)="keyPress($event)" minlength=10 maxlength=10 required
+                                    (keydown.space)="$event.preventDefault();"
+                                    [class.is-invalid]="UserPhone.invalid && UserPhone.touched"
+                                    [class.is-valid]="UserPhone.valid">
+                                <div *ngIf="UserPhone.errors && (UserPhone.invalid && UserPhone.touched)">
+                                    <small class="text-danger" *ngIf=UserPhone?.errors.required>Phone No. Is
+                                        Required</small>
+                                    <small class="text-danger" *ngIf=UserPhone?.errors.minlength>Phone No. Should Be 10
+                                        digits</small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Alternate Number<b class="text-danger" >*</b></label>
+                            </div>
+                            <div class="col-lg-5">
+
+                                    <input type="text" class="form-control" placeholder="Enter 10 digit Phone No."
+                                    name="AlternateNo" id="AlternateNo" #AltPhone="ngModel" [(ngModel)]="user.AlternateNo"
+                                    autocomplete="off" (keypress)="keyPress($event)" minlength=10 maxlength=10 required
+                                    (keydown.space)="$event.preventDefault();"
+                                    [class.is-invalid]="AltPhone.invalid && AltPhone.touched"
+                                    [class.is-valid]="AltPhone.valid">
+                                <div *ngIf="AltPhone.errors && (AltPhone.invalid && AltPhone.touched)">
+                                    <small class="text-danger" *ngIf=AltPhone?.errors.required>Alt Phone No. Is
+                                        Required</small>
+                                    <small class="text-danger" *ngIf=AltPhone?.errors.minlength> Alt Phone No. Should Be 10
+                                        digits</small>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Role<b class="text-danger" >*</b></label>
+                            </div>
+                            <div class="col-lg-5">
+                                    <select class="form-control" name="RoleCode" id="RoleCode" [(ngModel)]="user.UserRole" required #UserRole="ngModel" [class.is-valid]="UserRole.valid" [class.is-invalid]="UserRole.invalid && UserRole.touched" >
+                                    <option *ngFor="let name of UserRole1" value="{{name.ID}}">{{name.Name}}</option>
+                                
+                                </select>
+                                <div *ngIf="UserRole.touched && UserRole.invalid">
+                                        <small class="text-danger">User Role is Required</small>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Profile Picture</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <input type="file" class="form-control" (change)="uploadFile($event);" name="ProfilePicture">
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Insurer Name<b class="text-danger" >*</b></label>
+                            </div>
+                            <div class="col-lg-5">
+                                    <select class="form-control" name="InsurerName"  [(ngModel)]="user.InsurerName" required #InsurerName="ngModel" [class.is-valid]="InsurerName.valid" [class.is-invalid]="InsurerName.invalid && InsurerName.touched" >
+                                    <option  *ngFor="let name of InsurerName1" value="{{name.ID}}">{{name.InsureName}}</option>
+                                   
+                                </select>
+                                <div *ngIf="InsurerName.touched && InsurerName.invalid">
+                                        <small class="text-danger">Insurer name is Required</small>
+                                    </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-2">
+                            <div class="col-md-3">
+                                <label>Status</label>
+                            </div>
+                            <div class="col-lg-5">
+                                <select class="form-control" name="Status" id="Status" [(ngModel)]="user.Status">
+                                    <option value="1"> Active</option>
+                                    <option value="2"> Inctive</option>
+                                  
+
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="form-group mt-3">
+                                <button class="btn btn-success" type="submit" [disabled]="userForm.invalid"
+                              style="margin-left: 30px">Save</button>
+                           </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+            <br>
+        </div>
+
+
+
+        <div>
+            <form>
+                <div class="card" style="height: 45vh;" style="background-color: lightgray">
+                    <div class="card-block">
+                        <h5>'Roles and Permission'</h5>
+                        <div class="table-overflow">
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th> 'Name'</th>
+                                        <th>' Can Add' </th>
+                                        <th>' Can View' </th>
+                                        <th> 'Can Edit' </th>
+                                        <th>'Can Delete'</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="form-group" style="white-space: nowrap">
+                                        <td>'Dashboard'</td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="dashAdd" name="dashAdd" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="dashView" name="dashView" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="dashEdit" name="dashEdit" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="dashDelete" name="dashDelete" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="form-group">
+                                        <td>'New Intimation'</td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="AddIntimation" name="AddIntimation" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="CustomerView" name="CustomerView" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="CustomerEdit" name="CustomerEdit" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="CustomerDelete" name="CustomerDelete" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>'My Tray' </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="AddCases" name="AddCases" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="OrderView" name="OrderView" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="OrderEdit" name="OrderEdit" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="OrderDelete" name="OrderDelete" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            
+                            
+                                    <tr class="form-group">
+                                        <td>'Surveyors'</td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="AddSurveyors" name="AddSurveyors" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportView" name="reportView" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportEdit" name="reportEdit" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportDelete" name="reportDelete" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="form-group">
+                                        <td>'Client Report Uploaded'</td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="AddClientReportUploaded" name="AddClientReportUploaded" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportView" name="reportView" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportEdit" name="reportEdit" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportDelete" name="reportDelete" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="form-group">
+                                        <td>'User Management'</td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="AddUserManagement" name="AddUserManagement" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportView" name="reportView" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportEdit" name="reportEdit" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-control">
+                                                <input id="reportDelete" name="reportDelete" type="checkbox">
+                                                <label for=""></label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="row">
+                                <div class="form-group mt-3">
+                                    <button class="btn btn-danger" type="submit" style="margin-left: 30px">Save</button>
+                               </div>
+    
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>

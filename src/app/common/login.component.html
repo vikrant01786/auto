@@ -1,0 +1,52 @@
+<div class="container">
+    
+    <!-- <h2>Card Header and Footer</h2> -->
+    <div class="card mx-auto">
+        <div class="card-header">
+            <h1 class="text-center">
+                    <img src="assets/image/logo.png"  width="42" height="42">Autosure</h1>
+
+        </div>
+        <div class="card-body">
+            <form class="login-form" #loginForm="ngForm" (ngSubmit)="validateUser($event)">
+            <div class="row">
+                <div class="col form-group">
+                    <input class="form-control" required id="userEmail" [(ngModel)]="loginUser.userEmail" name="userEmail" placeholder="Enter Username" type="text" autocomplete="off" #userEmail="ngModel" [class.is-invalid]="userEmail.invalid && userEmail.touched" minlength="3" [class.is-valid]="userEmail.valid">
+                    <div *ngIf="userEmail.errors && (userEmail.invalid && userEmail.touched)">
+                        <small class="text-danger" *ngIf=userEmail?.errors.required>UserName Is Required</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col form-group">
+                    <input input class="form-control" required id="userPassword" [(ngModel)]="loginUser.userPassword" name="userPassword" placeholder="User Password" type="password" #pwd="ngModel" [class.is-invalid]="pwd.invalid && pwd.touched"  minlength="5" [class.is-valid]="pwd.valid">
+                    <div *ngIf="pwd.errors && (pwd.invalid && pwd.touched)">
+                        <small class="text-danger" *ngIf=pwd?.errors.required>Password Is Required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col form-group text-center">
+                    <button type="submit" class="btn btn-login float-right" [disabled]="loginForm.form.invalid">Submit</button>
+                </div>
+            </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="row mt-4 ">
+            <div class="col form-group text-center">
+                <h6>
+                    <a routerLink="/forget-password"><i class="fa fa-lock" aria-hidden="true"></i>
+                         &nbsp;Forget Your password</a></h6>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col form-group text-center">
+                    <h6>
+                        <i class="fab fa-android" aria-hidden="true"></i>
+                             &nbsp;Get Our Autoinspekt App()1.5.40</h6>
+                </div>
+            </div>
+</div>

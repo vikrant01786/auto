@@ -1,0 +1,234 @@
+<div class="container">
+  <div class="card border">
+    <div class="card-body">
+      <form>
+        <div class="row mt-3">
+        <div class="col-md-3">
+          <label>Manufacture Year</label>
+          <br>
+          <div class="input-group">
+              <select class="form-control" name="manufactureYear" [(ngModel)]="manufactureYear.Name" (change)="getManufacturerList($event.target.value)">
+              
+                  <option value="null">Select </option>
+                  <option *ngFor="let manufactureYear of ManufactureYearList" value="{{manufactureYear.ID}}">{{manufactureYear.Name}} </option>
+              </select>
+              <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ManufacturerYearModel"> <i class="ti ti-plus"></i> </button>
+                    </span>
+          </div>
+      </div>
+      
+      <div class="col-md-3">
+        <label>Manufacturer</label>
+        <br>
+        <div class="input-group">
+            <select class="form-control" name="Manufacturer" [(ngModel)]="manufacturer.Name" (change)="getModelList($event.target.value)" >
+             
+                <option value="null">Select </option>
+                <option value="{{manufacturer.ID}}" *ngFor="let manufacturer of ManufacturerList"> {{manufacturer.Name}} </option>
+            </select>
+            <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ManufacturerModal" *ngIf="manufactureYear.Name !== null"> <i class="ti ti-plus"></i> </button>
+                  </span>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+      <label>Model Name</label>
+      <br>
+      <div class="input-group">
+          <select class="form-control" name="Model" [(ngModel)]="model.Name" (change)="getVariantList($event.target.value)" >
+           
+              <option value="null">Select </option>
+              <option value="{{model.ID}}" *ngFor="let model of ModelList"> {{model.Name}} </option>
+          </select>
+          <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modlModal" *ngIf="manufacturer.Name !== null"> <i class="ti ti-plus"></i> </button>
+                </span>
+      </div>
+  </div>
+
+  <div class="col-md-3">
+    <label>Variant Name</label>
+    <br>
+    <div class="input-group">
+        <select class="form-control" name="Variant" [(ngModel)]="variant.Name">
+         
+            <option value="null">Select </option>
+            <option value="{{variant.ID}}" *ngFor="let variant of VariantList"> {{variant.Name}} </option>
+        </select>
+        <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#variantModal" *ngIf="model.Name !== null"> <i class="ti ti-plus"></i> </button>
+              </span>
+    </div>
+</div>
+
+</div>
+      <!-- The Modal -->
+<div class="modal" id="ManufacturerYearModel">
+  <div class="modal-dialog" style="margin-top: 10%;">
+      <div class="modal-content">
+        <form (ngSubmit)="saveManufactureyear()">
+
+          <!-- Modal Header -->
+          <div class="modal-header bg-primary">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <label>Manufacture Year</label>
+                  <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter Name" name="ManufactureYear" [(ngModel)]="manufactureYear.Name">
+                </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button type="button" (click)="saveManufactureyear()" class="btn btn-success" data-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+          </div>
+      </form>
+    </div>
+  </div>
+</div>   
+
+    <!-- The Modal -->
+    <div class="modal" id="ManufacturerModal">
+      <div class="modal-dialog" style="margin-top: 10%;">
+          <div class="modal-content">
+            <form (ngSubmit)="saveManufacturer()"> 
+    
+              <!-- Modal Header -->
+               <div class="modal-header bg-primary">
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button type="button" class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
+              </div> 
+    
+              <!-- Modal body -->
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-12 ">
+                      <label>Manufacturer</label>
+                      <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="Manufacturer" [(ngModel)]="manufacturer.Name">
+                    </div>
+                    </div>
+                  </div>
+              </div>
+    
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                  <button type="button" (click)="saveManufacturer()" class="btn btn-success" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>  
+
+    <div class="modal" id="modlModal">
+      <div class="modal-dialog" style="margin-top: 10%;">
+          <div class="modal-content">
+            <form (ngSubmit)="saveModel()"> 
+    
+              <!-- Modal Header -->
+               <div class="modal-header bg-primary">
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button type="button" class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
+              </div> 
+    
+              <!-- Modal body -->
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-12 ">
+                      <label>Add Model</label>
+                      <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="Model" [(ngModel)]="model.Name">
+                    </div>
+                    </div>
+                  </div>
+              </div>
+    
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                  <button type="button" (click)="saveModel()" class="btn btn-success" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>  
+
+    <div class="modal" id="variantModal">
+      <div class="modal-dialog" style="margin-top: 10%;">
+          <div class="modal-content">
+            <form (ngSubmit)="saveVariant()"> 
+    
+              <!-- Modal Header -->
+               <div class="modal-header bg-primary">
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button type="button" class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
+              </div> 
+    
+              <!-- Modal body -->
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-12 ">
+                      <label> Add Variant</label>
+                      <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Enter Name" name="Variant" [(ngModel)]="variant.Name">
+                    </div>
+                    </div>
+                  </div>
+              </div>
+    
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                  <button type="button" (click)="saveVariant()" class="btn btn-success" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>  
+
+
+
+
+
+</form>
+
+
+<div class="card card-body">
+  <table id="example1" class="table table-bordered table-striped" datatable [dtOptions]="dtOptions"
+  [dtTrigger]="dtTrigger">
+      <thead>
+        <tr >
+        <th>S.No</th>
+        <th>TableName</th>
+        <th>Name</th>
+        </tr>
+        
+      </thead>
+    
+    
+      <tbody >
+        <tr *ngFor="let support of supportList; let i = index">
+          <td> {{i+1}} </td>
+        <td> {{support.TableName}} </td>
+        <td> {{support.Name}} </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</div>

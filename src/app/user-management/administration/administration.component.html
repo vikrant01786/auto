@@ -1,0 +1,175 @@
+<div class="container">
+  <div class="card border">
+    <div class="card-body mt-3">
+      <form>
+        <div class="row">
+        <div class="col-md-4">
+          <label>Insurer Name</label>
+          <br>
+          <div class="input-group">
+              <select class="form-control" name="insurerName" [(ngModel)]="insurerName.Name" (change)="getDevisionList($event.target.value)">
+             
+                  <option value="null">Select </option>
+                  <option value="{{insurer.ID}}" *ngFor="let insurer of InsurerNameList"> {{insurer.Name}} </option>
+              </select>
+              <span class="input-group-btn">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> <i class="ti ti-plus"></i> </button>
+                    </span>
+          </div>
+      </div>
+      <div class="col-md-4">
+        <label>Devision Name</label>
+        <br>
+        <div class="input-group">
+            <select class="form-control" name="DevisionName" [(ngModel)]="divisionName.Name" (change)="getBranchList($event.target.value)">
+         
+                <option value="null">Select </option>
+                <option value="{{division.ID}}" *ngFor="let division of devisionList"> {{division.Name}} </option>
+            </select>
+            <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#divisionModel" *ngIf="insurerName.Name !== null"> <i class="ti ti-plus"></i> </button>
+                  </span>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <label>Branch Name</label>
+      <br>
+      <div class="input-group">
+          <select class="form-control" name="BranchName" [(ngModel)]="branchName.Name">
+           
+              <option value="null">Select </option>
+              <option value="{{branch.ID}}" *ngFor="let branch of branchList"> {{branch.Name}} </option>
+          </select>
+          <span class="input-group-btn">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#branchModel" *ngIf="divisionName.Name !== null"> <i class="ti ti-plus"></i> </button>
+                </span>
+      </div>
+  </div>
+</div>
+      <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog" style="margin-top: 10%;">
+      <div class="modal-content">
+        <form (ngSubmit)="saveInsurer()">
+
+          <!-- Modal Header -->
+          <div class="modal-header bg-primary">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <label>Insurer Name</label>
+                  <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter Name" name="InsurerName" [(ngModel)]="insurerName.Name">
+                </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button type="button" (click)="saveInsurer()" class="btn btn-success" data-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="divisionModel">
+  <div class="modal-dialog" style="margin-top: 10%;">
+      <div class="modal-content">
+        <form (ngSubmit)="saveDivision()">
+
+          <!-- Modal Header -->
+          <div class="modal-header bg-primary">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <label>Division Name</label>
+                  <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter Name" name="DivisionName" [(ngModel)]="divisionName.Name">
+                </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button type="button" (click)="saveDivision()" class="btn btn-success" data-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal" id="branchModel">
+  <div class="modal-dialog" style="margin-top: 10%;">
+      <div class="modal-content">
+        <form (ngSubmit)="saveBranch()">
+
+          <!-- Modal Header -->
+          <div class="modal-header bg-primary">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal"><i class="ti ti-close"></i></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <label>Branch Name</label>
+                  <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter Name" name="BranchName" [(ngModel)]="branchName.Name">
+                </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button type="button" (click)="saveBranch()" class="btn btn-success" data-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+</form>
+
+
+<div class="card card-body">
+  <table id="example1" class="table table-bordered table-striped" datatable [dtOptions]="dtOptions"
+  [dtTrigger]="dtTrigger">
+      <thead>
+        <tr >
+        <th>S.No</th>
+        <th>TableName</th>
+        <th>Name</th>
+        </tr>
+        
+      </thead>
+    
+    
+      <tbody >
+        <tr *ngFor="let support of suppoerList; let i = index">
+          <td> {{i+1}} </td>
+        <td> {{support.TableName}} </td>
+        <td> {{support.Name}} </td>
+        </tr>
+        
+      </tbody>
+  </table>
+</div>

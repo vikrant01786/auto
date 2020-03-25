@@ -1,0 +1,841 @@
+<div class = "container-fluid ">
+  <div class="container border1 px-4 py-4">
+   
+  
+          <div class="row">
+            <div class="col-lg-4 col-md-4 mt-3">
+              <h1 class="hed1"><img src="assets/image/logo.png"  width="42" height="42">Autosure</h1>
+              <div class="row">
+                <div class="col-4 pr-0">
+                  <img src="assets/image/barcode.png" width="100%">
+                </div>
+                <div class="col-6">
+                  <p>Use your smart phone to scan the QR code and get detailed autoinspekt report</p>
+                </div>
+              </div>   
+            </div>
+            <div class="col-lg-8 col-md-8 mt-3 text-center">
+              <h1 class="hed2">Mahindra First Choice Wheels Ltd</h1>    
+              <p><b>Address:</b>10, BAKEY BIHARI DHAM, KENDRIYA HINDI SANSTHAN ROAD,DAYAL BAGH, AGRA <br><b>Phone: +91-562-3266220 , 915623266220 &nbsp;&nbsp;         Email : customercare@autoinspekt.com</b></p>    
+            </div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-2 col-md-2  text-right">
+             
+            </div>
+            <div class="col-lg-2 col-md-2 text-left mt-2">
+              <p></p>
+            </div>
+          </div> 
+          <div class="row head ">
+            <div class="col-4 text-left">
+             <h4 class="head"> Insurer Ref No:</h4>
+            </div>
+            <div class="col-4 text-center">
+             <h4 class="head"> 4-WHEELER INSPECTION REPORT</h4>
+            </div>
+            <div class="col-4 text-right">
+              Ref No:
+            </div>
+          </div>
+          <div class="row mt-3 snow">
+           <div class="col-12">
+             <div class="row border border-dark">
+               <div class="col-6 border border-dark ">
+                <h6><b>Proposer : {{ReportData[0]?.InsuredName}}</b></h6>
+               </div>
+               <div class="col-6 border border-dark">
+                <h6><b>Insurer/Broker : {{ReportData[0]?.InsurerNameDes}} </b></h6>
+               </div>
+             </div>
+             
+           </div>
+          </div>
+
+
+
+
+           <div class="row white ">
+            <div class="col-12 border border-dark ">
+              <div class="row ">
+                <div class="col-6 border border-dark">
+                 <h6><b> Officer/Agent Name & No :  {{ReportData[0]?.AgentName}} & {{ReportData[0]?.AgentMobileNo}}</b></h6>
+                </div>
+                <div class="col-3 border border-dark ">
+                  <h6><b> Inspection Date :  {{ReportData[0]?.IntimationDate}} </b></h6>
+                 </div>
+                 <div class="col-3  border border-dark">
+                  <h6> <b>Request Date :   {{ReportData[0]?.IntimationDate}}</b> </h6>
+                 </div>
+              </div>
+            </div>
+           </div> 
+           
+           
+           <div class="row snow">
+             <div class="col-12 border border-dark">
+               <h6><b>Inspection Place:  {{ReportData[0]?.StartingLocationFrom}}</b></h6>
+             </div>
+           </div>
+
+           <div class="row mt-2">
+             <div class="col">
+               <h2>VEHICLE DETAILS</h2>
+             </div>
+           </div>
+           <div class="row snow">
+             <div class="col-3 border border-dark">
+              <h6><b>Vehicle NO : {{ReportData[0]?.VehicleRegistrationNo}}</b></h6>
+             </div>
+             <div class="col-3 border border-dark">
+              <h6><b>Chassis NO : {{ReportData[0]?.ChassisNo}} </b></h6>
+             </div>
+
+             <div class="col-3 border border-dark">
+              <h6><b>Engine NO : {{ReportData[0]?.EngineNo}} </b></h6>
+             </div>
+
+             <div class="col-3 border border-dark">
+              <h6><b>Make :  </b></h6>
+             </div>
+           </div>
+
+
+           <div class="row white">
+            <div class="col-3 border border-dark">
+             <h6><b>Model & Variant : {{ReportData[0]?.ModelDes}} & {{ReportData[0]?.VarientDes}} </b></h6>
+            </div>
+            <div class="col-3 border border-dark">
+             <h6><b>Colour : {{ReportData[0]?.Colour}} </b> </h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+             <h6><b>Year of Manufacture : {{ReportData[0]?.ManufactureYearDes}}  </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+             <h6><b>Odometer Reading :  </b> </h6>
+            </div>
+          </div>
+          <div class="row snow">
+            <div class="col-3 border border-dark">
+             <h6><b>R.C. Verified : {{ReportData[0]?.RCVerifiedDes}} </b></h6>
+            </div>
+            <div class="col-3 border border-dark">
+             <h6><b>Fuel Used : {{ReportData[0]?.FuelUsedDes}} </b> </h6>
+            </div>
+
+            <div class="col-6 border border-dark">
+             <h6><b>Stepney Make-Dot No. : {{ReportData[0]?.StepneyTypeMake}}  </b></h6>
+            </div>
+
+            
+          </div>
+          <div class="row white">
+            <div class="col-6 border border-dark">
+             <h6><b>RH Front Tyre DOT No. : {{ReportData[0]?.RHFrontTyreDOTNo}} </b></h6>
+            </div>
+            
+            <div class="col-6 border border-dark">
+             <h6><b>RH Rear Tyre DOT No. : {{ReportData[0]?.RHRearTyreDOTNo}}  </b></h6>
+            </div>
+
+            
+          </div>
+          <div class="row snow">
+            <div class="col-6 border border-dark">
+             <h6><b>LH Front Tyre DOT No. : {{ReportData[0]?.LHFrontTyreDOTNo}}</b></h6>
+            </div>
+            
+            <div class="col-6 border border-dark">
+             <h6><b>LH Rear Tyre DOT No. :  {{ReportData[0]?.LHRearTyreDOTNo}} </b></h6>
+            </div>
+
+            
+          </div>
+          
+
+          <div class="row mt-2">
+            <div class="col">
+              <h2>ELECTRICAL& NON-ELECTRICAL ACCESSORIES</h2>
+            </div>
+          </div>
+          <div class="row snow">
+            <div class="col-3 border border-dark">
+             <h6><b>Stereo Make : {{ReportData[0]?.StereoMake}} </b></h6>
+            </div>
+            <div class="col-3 border border-dark">
+             <h6><b>CD Changer Make : {{ReportData[0]?.CDChangerMake}}   </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+             <h6><b>Other Electrical : {{ReportData[0]?.AnyOther}}    </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+             <h6><b>Seat Cover : {{ReportData[0]?.SeatCoversDes}}    </b></h6>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="row white">
+            <div class="col-3 border border-dark">
+             <h6><b>Centre Lock : {{ReportData[0]?.CentreLockDes}}  </b></h6>
+            </div>
+            <div class="col-3 border border-dark">
+             <h6><b>Gear Locking : {{ReportData[0]?.GearLockingDes}}    </b></h6>
+            </div>
+
+            <div class="col-6 border border-dark">
+             <h6><b>Other Non-Electrical : {{ReportData[0]?.AnyOther}}</b></h6>
+            </div>
+
+            
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <h2>INSPECTION DETAILS</h2>
+            </div>
+          </div>
+
+          <div class="row insp">
+            <div class="col border border-dark">
+              <h3 class="insp">FRONT/REAR </h3>
+            </div>
+          </div>
+          <div class="row white">
+            <div class="col-3 border border-dark ">
+              <h6><b>Front Bumper: {{ReportData[0]?.FrontBumperDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark ">
+              <h6><b>Indicator Light (LT) : {{ReportData[0]?.IndicatorLightLTDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark ">
+              <h6><b>Front Panel : {{ReportData[0]?.FrontPanelDes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark ">
+              <h6><b>Dicky : {{ReportData[0]?.DickyDes}}</b></h6>
+            </div>
+          </div>
+
+          <div class="row snow">
+            <div class="col-3 border border-dark">
+              <h6><b>Grill: {{ReportData[0]?.GrillDes}}</b></h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>Indicator Light (RT) : {{ReportData[0]?.IndicatorLightRTDes}} </b></h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>Bonnet : {{ReportData[0]?.BonnetDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Rear Bumper : {{ReportData[0]?.RearBumperDes}}</b></h6>
+            </div>
+          </div>
+
+
+
+          <div class="row white">
+            <div class="col-3 border border-dark">
+              <h6><b>Head Lamp (LT) : {{ReportData[0]?.HeadLampLTDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Fog Lamp (LT) : {{ReportData[0]?.FogLampLTDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Left Apron :{{ReportData[0]?.LeftApronDes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Tail Lamp (LT): {{ReportData[0]?.TailLampLTDes}}</b></h6>
+            </div>
+          </div>
+
+          <div class="row snow">
+            <div class="col-3 border border-dark">
+              <h6><b>Head Lamp (RT) :{{ReportData[0]?.HeadLampRTDes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Fog Lamp (RT) : {{ReportData[0]?.FogLampRTDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Right Apron : {{ReportData[0]?.RightApronDes}}</b></h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>Tail Lamp (RT) :{{ReportData[0]?.TailLampRTDes}}  </b></h6>
+            </div>
+          </div>
+
+          
+
+
+
+
+
+          <div class="row insp mt-2">
+            <div class="col border border-dark">
+              <h3 class="insp">LEFT</h3>
+            </div>
+          </div>
+          <div class="row white">
+            <div class="col-3 border border-dark ">
+              <h6><b>LT FrontFender : {{ReportData[0]?.LTFrontFenderDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>LT Pillar Door (A) : {{ReportData[0]?.LTPillarDoorADes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>LT FrontDoor : {{ReportData[0]?.LTFrontDoorDes}}</b></h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>LT Pillar Centre (B) : {{ReportData[0]?.LTPillarCenterBDes}}</b></h6>
+            </div>
+          </div>
+
+          
+          <div class="row snow">
+            <div class="col-3 border border-dark">
+              <h6><b>LT RearDoor : {{ReportData[0]?.LTRearDoorDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>LT Pillar Rear (C) : {{ReportData[0]?.LTPillarRearCDes}}</b> </h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>LT RunningBoard : {{ReportData[0]?.LTRunningBoardDes}}</b> </h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>LT Qtr Panel : {{ReportData[0]?.LTQtrPanelDes}}</b> </h6>
+            </div>
+          </div>
+  
+
+
+
+          <div class="row insp mt-4">
+            <div class="col border border-dark">
+              <h3 class="insp">RIGHT</h3>
+            </div>
+          </div>
+          <div class="row white">
+            <div class="col-3 border border-dark ">
+              <h6><b>RT Qtr Panel : {{ReportData[0]?.RTQtrPanelDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>RT Center Pillar (B) : {{ReportData[0]?.RTCenterPillarBDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Floor / Silencer : {{ReportData[0]?.FloorSilencerDes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>RT Rear Door : {{ReportData[0]?.RTRearDoorDes}} </b></h6>
+            </div>
+          </div>
+
+          
+          <div class="row snow">
+            <div class="col-3 border border-dark">
+              <h6><b>RT Rear Pillar (C): {{ReportData[0]?.RTPillarRearCDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Rear View Mirror(LT): {{ReportData[0]?.RearViewMirrorLTDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>RT Front Door : {{ReportData[0]?.RTFrontDoorDes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>RT Running Board : {{ReportData[0]?.RTRunningBoardDes}} </b></h6>
+            </div>
+          </div>
+
+          <div class="row white">
+            <div class="col-3 border border-dark">
+              <h6><b>Rear View Mirror(RT): {{ReportData[0]?.RearViewMirrorRTDes}} </b></h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>RT Front Pillar (A): {{ReportData[0]?.RTPillarFrontADes}}</b> </h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>RT Front Fender : {{ReportData[0]?.RTFrontFenderDes}}</b> </h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Tyres : {{ReportData[0]?.TyresDes}} </b> </h6>
+            </div>
+          </div>
+
+                    
+          <div class="row insp mt-4">
+            <div class="col border border-dark">
+              <h3 class="insp">GLASS/OTHERS</h3>
+            </div>
+          </div>
+          <div class="row white">
+            <div class="col-3 border border-dark ">
+              <h6><b>Back Glass :  {{ReportData[0]?.BackGlassDes}}</b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>RF Door Glass :  {{ReportData[0]?.RightFrontDoorGlassDes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>LF Door Glass :  {{ReportData[0]?.LeftFrontDoorGlassDes}}  </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>Rim:  {{ReportData[0]?.RimDes}} </b></h6>
+            </div>
+          </div>
+
+          
+          <div class="row snow">
+            <div class="col-3 border border-dark">
+              <h6><b>Front ws Glass Laminated : </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>RR Door Glass : {{ReportData[0]?.RightRearDoorGlassDes}} </b></h6>
+            </div>
+
+            <div class="col-3 border border-dark">
+              <h6><b>LR Door Glass : {{ReportData[0]?.LeftRearDoorGlassDes}}  </b></h6>
+            </div>
+
+
+            <div class="col-3 border border-dark">
+              <h6><b>Under Carriage :  </b></h6>
+            </div>
+          </div>
+
+          <div class="row white">
+            <div class="col-6 border border-dark">
+              <h6><b>Remarks : {{ReportData[0]?.Remarks}} </b></h6>
+            </div>
+
+
+            <div class="col-6 border border-dark">
+              <h6><b>Inspection Status : {{ReportData[0]?.IntimationStatusDes}} </b></h6>
+            </div>
+          </div>
+
+                    
+
+
+          
+           
+          <div class="row mt-4">
+            <div class="col border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}"  width="100%" height="200px">
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="row text-center mt-3">
+          <div class="col">
+            <p><b>Corporate Office : Mahindra First Choice Wheels Limited, Elnet Software City, 5th Floor, TS 140, Block 2&9, Rajiv Gandhi Salai, Taramani, Chennai - 600 113.</b></p>
+          </div>
+        </div>
+
+
+
+      <div class="container border1 px-2 py-2">
+       <div class="row ">
+         <div class="col-4">
+          <h1 class="hed1"><img src="assets/image/logo.png"  width="42" height="42">Autoinspect</h1>
+         </div>
+         <div class="col-4">
+          
+         </div>
+         <div class="col-4 text-right mt-3">
+          <h6><b></b></h6>
+         </div>
+       </div>
+
+
+        <div class="row" >
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+            </div>
+            
+          </div>
+
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}g" width="100%">
+            </div>
+            
+          </div>
+        </div>
+
+
+        <div class="row" >
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+            </div>
+            
+          </div>
+
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+            </div>
+            
+          </div>
+
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}g" width="100%">
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+            </div>
+            
+          </div>
+
+          <div class="col-6" >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+            </div>
+            
+          </div>
+        </div>
+
+             
+      </div>
+
+
+         <div class="row text-center mt-3">
+        <div class="col">
+          <p><b>Corporate Office : Mahindra First Choice Wheels Limited, Elnet Software City, 5th Floor, TS 140, Block 2&9, Rajiv Gandhi Salai, Taramani, Chennai - 600 113.</b></p>
+        </div>
+      </div>
+
+      <div class="container border1 px-2 py-2">
+        <div class="row ">
+          <div class="col-4">
+           <h1 class="hed1"><img src="assets/image/logo.png"  width="42" height="42">Autoinspect</h1>
+          </div>
+          <div class="col-4">
+           
+          </div>
+          <div class="col-4 text-right mt-3">
+           <h6><b></b></h6>
+          </div>
+        </div>
+ 
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+              
+       </div>
+ 
+ 
+          <div class="row text-center mt-3">
+         <div class="col">
+           <p><b>Corporate Office : Mahindra First Choice Wheels Limited, Elnet Software City, 5th Floor, TS 140, Block 2&9, Rajiv Gandhi Salai, Taramani, Chennai - 600 113.</b></p>
+         </div>
+       </div>
+
+       <div class="container border1 px-2 py-2">
+        <div class="row ">
+          <div class="col-4">
+           <h1 class="hed1"><img src="assets/image/logo.png"  width="42" height="42">Autoinspect</h1>
+          </div>
+          <div class="col-4">
+           
+          </div>
+          <div class="col-4 text-right mt-3">
+           <h6><b></b></h6>
+          </div>
+        </div>
+ 
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+         <div class="row" >
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6" >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+         </div>
+ 
+              
+       </div>
+ 
+ 
+          <div class="row text-center mt-3">
+         <div class="col">
+           <p><b>Corporate Office : Mahindra First Choice Wheels Limited, Elnet Software City, 5th Floor, TS 140, Block 2&9, Rajiv Gandhi Salai, Taramani, Chennai - 600 113.</b></p>
+         </div>
+       </div>
+
+
+       
+
+      <div class="container border1 px-2 py-2">
+        <div class="row ">
+          <div class="col-4">
+           <h1 class="hed1"><img src="assets/image/logo.png"  width="42" height="42">Autoinspect</h1>
+          </div>
+          <div class="col-4">
+           
+          </div>
+          <div class="col-4 text-right mt-3">
+           <h5><b></b></h5>
+          </div>
+        </div>
+ 
+ 
+         <div class="row mt-2 mx-1 my-1" >
+           <div class="col-6  mt-2 " >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+ 
+           <div class="col-6  mt-2 " >
+             <div class="card border border-dark">
+               <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+             </div>
+             
+           </div>
+
+           
+         </div>
+
+         <div class="row mt-2 mx-1 my-1" >
+          <div class="col-6  mt-2 " >
+            <div class="card border border-dark">
+              <img src="{{env.apiUrl}}{{ReportData[0]?.ImageURL}}" width="100%">
+            </div>
+            
+          </div>
+
+          <div class="col-6  mt-2 " >
+            
+            
+          </div>
+
+          
+        </div>
+
+        
+
+        <div class="row mx-1 my-1 border border-dark">
+
+          <div class="col">
+           <div class="row text-center">
+             <div class="col-12">
+               <h4> Declaration</h4>
+             </div>
+           </div>
+
+
+
+
+           <div class="row">
+            <div class="col-12 ">
+              <ul>
+                <li>
+                  I/We hereby confirm that the vehicle has been inspected in presense of me/my/our representative.
+                </li>
+                <li>
+                  I/We hereby confirm that the identification details and damages of vehicle as noted / photographs taken by the inspecting officer are correct. Nothing has been hidden/undisclosed.
+                </li>
+                <li>
+                  I/We agreed that Repair/Replacement of dented/crack parts & Repair Painting of dented/scratched panels as per this inspection photographs shall be excluded in event of any claim lodged during the policy period.
+                </li>
+                <li>I hereby certify that I have shown the same vehicle which I have to get insured and if later at the time of claim it is found that vehicle shown and accidental are different then no claim is payble to me.</li>
+                <li>
+                  I hereby certify that I will not claim for damages existing in my vehicle whether same are mentioned in report or not if same are seen in photograph taken by the inspector.
+                </li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+              
+       </div>
+       <div class="row text-center mt-3">
+         <div class="col">
+           <p><b>Corporate Office : Mahindra First Choice Wheels Limited, Elnet Software City, 5th Floor, TS 140, Block 2&9, Rajiv Gandhi Salai, Taramani, Chennai - 600 113.</b></p>
+         </div>
+       </div>
+</div>

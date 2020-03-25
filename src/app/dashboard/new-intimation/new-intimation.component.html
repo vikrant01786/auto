@@ -1,0 +1,575 @@
+<div class="container-fluid">
+  <ngx-spinner bdOpacity=0.9 bdColor="#333" size="medium" color="#fff" type="cube-transition" [fullScreen]="true">
+      <p style="color: white"> Loading... </p>
+
+  </ngx-spinner>
+  <form  #agentForm="ngForm" (ngSubmit)="saveIntimation() ">
+  <div class="row">
+      <div class="col-md-6">
+          <h5>{{label}} Intimation</h5>
+
+      </div>
+      <div class="col-md-6">
+          <div class="float-right">
+              <label class="amit">Intimation</label>
+              <label>/{{label}}</label>
+          </div>
+
+      </div>
+  </div>
+
+
+  <hr>
+  <div class="row">
+      <div class="col-lg-6 float-left">
+          <label class="amit">Intemator/Angent</label>
+      </div>
+      <div class="col-lg-6 float-left">
+          <label class="amit">Insurance Comapny Details</label>
+      </div>
+  </div>
+  <hr>
+  <!----start-->
+  
+  <div class="row">
+      <div class="col-lg-6">
+
+          <!-- 1st row -->
+          <div class="row ">
+              <div class="col-lg-5 col-md-5">
+                  <label> Intimator/Agent Mobile no. <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                 <input type="text" class="form-control" placeholder="Enter 10 digit Phone No."
+                   name="AgentMobileNo" id="AgentMobileNo" #AgentMobileNo="ngModel" [(ngModel)]="intimation.AgentMobileNo"
+                   autocomplete="off" (keypress)="keyPress($event)" minlength=10 maxlength=10 required
+                   (keydown.space)="$event.preventDefault();"
+                   [class.is-invalid]="AgentMobileNo.invalid && AgentMobileNo.touched"
+                   [class.is-valid]="AgentMobileNo.valid">
+               <div *ngIf="AgentMobileNo.errors && (AgentMobileNo.invalid && AgentMobileNo.touched)">
+                   <small class="text-danger" *ngIf=AgentMobileNo?.errors.required>Phone No. Is
+                       Required</small>
+                   <small class="text-danger" *ngIf=AgentMobileNo?.errors.minlength>Phone No. Should Be 10
+                       digits</small>
+               </div>
+            </div>
+          </div>
+
+<!-- 2nd row -->
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Intemator/Agent's code </label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <input type="text" class="form-control mobile-text-box" name="AgentCode" placeholder="Agent's Code" [(ngModel)]="intimation.AgentCode">
+              </div>
+          </div>
+          <!-- 3rd row -->
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label> Intimator/Agent Name</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <input type="text" class="form-control mobile-text-box"  name="AgentName" placeholder="Agent's Name" [(ngModel)]="intimation.AgentName" >
+              </div>
+          </div>
+          
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label> Intimator/Agent Email</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <input type="text" class="form-control mobile-text-box" name="AgentEmail" placeholder="Agent's Email Address" [(ngModel)]="intimation.AgentEmail">
+              </div>
+          </div>
+
+      </div>
+
+
+
+      <!-- start rightside rows -->
+      <div class="col-lg-6">
+
+              <div class="row ">
+                      <div class="col-lg-5 col-md-5">
+                          <label> Regional Office (Creator) <b class="text-danger" >*</b></label>
+                      </div>
+                      <div class="col-lg-7 col-md-7">
+                          <select class="form-control"  name="ROOffice" id="ROOffice" [(ngModel)]="intimation.ROOffice"
+                          required #RoOffice="ngModel" [class.is-valid]="RoOffice.valid" [class.is-invalid]="RoOffice.invalid && RoOffice.touched" >
+                          <option  *ngFor="let name of RoOffice1" value="{{name.ID}}">{{name.Name}}</option>
+                             
+                          </select>
+                          <div *ngIf="RoOffice.touched && RoOffice.invalid">
+                                  <small class="text-danger">RoOffice is Required</small>
+                          </div>
+      
+                      </div>
+                  </div>
+
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label> Insurer Name <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <select class="form-control"  name="InsurerName" id="InsurerName" [(ngModel)]="intimation.InsurerName"
+                  required #InsName="ngModel" [class.is-valid]="InsName.valid" [class.is-invalid]="InsName.invalid && InsName.touched"  (change)="getDevisionList($event.target.value)" >
+                  <option  *ngFor="let name of InsurerName1" value="{{name.ID}}">{{name.Name}}</option>
+                     
+                  </select>
+                  <div *ngIf="InsName.touched && InsName.invalid">
+                          <small class="text-danger">Insurer name is Required</small>
+                      </div>
+
+              </div>
+          </div>
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label> Devision Name <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <select class="form-control" name="DivisionName" id="DivisionName" [(ngModel)] 
+                  ="intimation.DivisionName" (change)="getBranchList($event.target.value)" required #DivName="ngModel" [class.is-valid]="DivName.valid" [class.is-invalid]="DivName.invalid && DivName.touched">
+                      <option *ngFor="let devision of devisionList" value="{{devision.ID}}"> {{devision.Name}} </option>
+                  </select>
+                  <div *ngIf="DivName.touched && DivName.invalid">
+                      <small class="text-danger">Division name is Required</small>
+                  </div>
+                  
+                  </div>
+                  </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label> Brach Name <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <select class="form-control" name="BranchName" id="BranchName" [(ngModel)]
+                  ="intimation.BranchName" required #BranchName="ngModel" [class.is-valid]="BranchName.valid" [class.is-invalid]="BranchName.invalid && BranchName.touched" >
+               <option *ngFor="let branch of branchList" value="{{branch.ID}}"> {{branch.Name}} </option>
+                 </select>
+                  <div *ngIf="BranchName.touched && BranchName.invalid">
+                          <small class="text-danger">Branch name is Required</small>
+                      </div>
+
+              </div>
+          </div>
+
+
+      </div>
+  </div>
+
+  <div class="row mt-4">
+      <div class="col-lg-6 float-left">
+          <label class="amit">Insurance Vehical Details</label>
+      </div>
+  </div>
+  <hr>
+
+  <div class="row">
+      <div class="col-lg-6">
+          <!--  start 2n block 1st row -->
+          <div class="row">
+              <div class="col-lg-5 col-md-5">
+                  <label>Insurer Ref No.</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <input type="text" class="form-control mobile-text-box" name="InsurerRefNo" [(ngModel)]="intimation.InsurerRefNo">
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Insured Address</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <input type="text" class="form-control mobile-text-box" name="InsuredAddress" [(ngModel)]="intimation.InsuredAddress">
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Contact Person MobileNo.</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <input type="text" class="form-control" placeholder="Enter 10 digit Phone No."
+                  name="ContactPersonMobileNo" id="ContactPersonMobileNo" #ContMobileNo="ngModel" [(ngModel)]="intimation.ContactPersonMobileNo"
+                  autocomplete="off" (keypress)="keyPress($event)" minlength=10 maxlength=10 required
+                  (keydown.space)="$event.preventDefault();"
+                  [class.is-invalid]="ContMobileNo.invalid "
+                  [class.is-valid]="ContMobileNo.valid">
+              <div *ngIf="ContMobileNo.errors && (ContMobileNo.invalid)">
+                 
+                  <small class="text-danger" *ngIf=ContMobileNo?.errors.minlength>Phone No. Should Be 10
+                      digits</small>
+              </div>
+          </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Manufacture Year <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <select class="form-control" name="ManufactureYear" id="ManufactureYear" [(ngModel)]
+                      ="intimation.ManufactureYear"  required #ManufactYear="ngModel" [class.is-valid]="ManufactYear.valid" [class.is-invalid]="ManufactYear.invalid && ManufactYear.touched">
+                      <option *ngFor="let name of ManufactureYear1" value="{{name.ID}}">{{name.Name}} </option>
+                  </select>
+                  <div *ngIf="ManufactYear.touched && ManufactYear.invalid">
+                          <small class="text-danger">  year is Required</small>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Vehical Type <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <select class="form-control" name="VehicleType" id="VehicleType" [(ngModel)]
+                      ="intimation.VehicleType" required #VehType="ngModel"   [class.is-valid]="VehType.valid" [class.is-invalid]="VehType.invalid && VehType.touched">
+                      <option *ngFor="let name of VehicleType1" value="{{name.ID}}">{{name.Name}} </option>
+                       </select>
+                  <div *ngIf="VehType.touched && VehType.invalid">
+                          <small class="text-danger"> Vehical type is Required</small>
+                 </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Model</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                   <select class="form-control" name="Model" id="Model" [(ngModel)]  ="intimation.Model" (change)="getBranchList($event.target.value)" required #Mod="ngModel"  (change)="getVarientList($event.target.value)" [class.is-valid]="Mod.valid" [class.is-invalid]="Mod.invalid && Mod.touched">
+                    <option *ngFor="let name of ModelList" value="{{name.ID}}"> {{name.Name}} </option>
+                        </select>
+                  <div *ngIf="Mod.touched && Mod.invalid">
+                      <small class="text-danger">Model name is Required</small>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Start Location From <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <textarea class="form-control" required name="StartingLocationFrom" [(ngModel)]="intimation.StartingLocationFrom" type="text"  autocomplete="off" #StartLoc="ngModel"
+                      [class.is-invalid]="StartLoc.invalid && StartLoc.touched" minlength="4"
+                      [class.is-valid]="StartLoc.valid"></textarea>
+                  <div *ngIf="StartLoc.errors && (StartLoc.invalid && StartLoc.touched)">
+                      <small class="text-danger" *ngIf="StartLoc?.errors.required"> Enter location</small>
+                       
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>kgm ( from location to inspection loc) <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <input class="form-control" required name="Kgm" [(ngModel)]="intimation.Kgm" type="text"  autocomplete="off" #Kg="ngModel"
+                      [class.is-invalid]="Kg.invalid && Kg.touched" minlength="4"
+                      [class.is-valid]="Kg.valid">
+                  <div *ngIf="Kg.errors && (Kg.invalid && Kg.touched)">
+                      <small class="text-danger" *ngIf="Kg?.errors.required">This Field Is Required </small>
+                       
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Remark</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <textarea class="from-control mobile-text-box"  name="Remarks" [(ngModel)]="intimation.Remarks"></textarea>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Pincode</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <textarea class="from-control mobile-text-box"  name="Pincode" [(ngModel)]="intimation.Pincode"></textarea>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-lg-6">
+          <!-- start 2n block 2nd half 1st row  -->
+          <div class="row">
+              <div class="col-lg-5 col-md-5">
+                  <label>Insured Name <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <input class="form-control" required name="InsuredName" [(ngModel)]="intimation.InsuredName" type="text" placeholder="Enter the insured name" autocomplete="off" #InsureName="ngModel"
+                      [class.is-invalid]="InsureName.invalid && InsureName.touched" minlength="4"
+                      [class.is-valid]="InsureName.valid">
+                  <div *ngIf="InsureName.errors && (InsureName.invalid && InsureName.touched)">
+                      <small class="text-danger" *ngIf="InsureName?.errors.required">If not available,
+                          please use NA</small>
+                      <small class="text-danger" *ngIf=InsureName?.errors.minlength>Name Should Be Atleast 3
+                          Characters</small>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Insured Mobile No. <b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <input type="text" class="form-control" placeholder="Enter 10 digit Phone No."
+                      name="InsuredMobileNo" id="InsuredMobileNo" #InsuredMobileNo="ngModel" [(ngModel)]="intimation.InsuredMobileNo" placeholder="Insured Mobile No."
+                      autocomplete="off" (keypress)="keyPress($event)" minlength=10 maxlength=10 required
+                      (keydown.space)="$event.preventDefault();"
+                      [class.is-invalid]="InsuredMobileNo.invalid && InsuredMobileNo.touched"
+                      [class.is-valid]="InsuredMobileNo.valid">
+                  <div *ngIf="InsuredMobileNo.errors && (InsuredMobileNo.invalid && InsuredMobileNo.touched)">
+                      <small class="text-danger" *ngIf=InsuredMobileNo?.errors.required>Phone No. Is
+                          Required</small>
+                      <small class="text-danger" *ngIf=InsuredMobileNo?.errors.minlength>Phone No. Should Be 10
+                          digits</small>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Vehical Registration No.<b class="text-danger" >*</b></label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <input class="form-control" required name="VehicleRegistrationNo" [(ngModel)]="intimation.VehicleRegistrationNo" type="text" placeholder="Enter Vehicle Registration No." autocomplete="off" #VehRegNo="ngModel"
+                      [class.is-invalid]="VehRegNo.invalid && VehRegNo.touched" minlength="4"
+                      [class.is-valid]="VehRegNo.valid">
+                  <div *ngIf="VehRegNo.errors && (VehRegNo.invalid && VehRegNo.touched)">
+                      <small class="text-danger" style="font-size:15px;" *ngIf="VehRegNo?.errors.required">For new car use AF000 and for not available use NA000</small>
+                       
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Inspection Type</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <select class="form-control" name="InspectionType" [(ngModel)]="intimation.InspectionType" >
+                      <option *ngFor="let name of InspectionType1" value="{{name.ID}}">{{name.Name}} </option>
+                  </select>
+                 
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Manufacturer</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+               <select class="form-control" name="Manufacturer" id="Manufacturer" [(ngModel)] 
+               ="intimation.Manufacturer" (change)="getModelList($event.target.value)" required #Manufcturer="ngModel" [class.is-valid]="Manufcturer.valid" [class.is-invalid]="Manufcturer.invalid && Manufcturer.touched">
+                  <option *ngFor="let name of ManufacturerList" value="{{name.ID}}"> {{name.Name}} </option>
+               </select>
+                  <div *ngIf="Manufcturer.touched && Manufcturer.invalid">
+                      <small class="text-danger">Manufcturer name is Required</small>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Variant</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                   <select class="form-control" name="Variant" id="Variant" [(ngModel)] 
+                   ="intimation.Variant"  required #Vari="ngModel" [class.is-valid]="Vari.valid" [class.is-invalid]="Vari.invalid && Vari.touched" >
+                <option *ngFor="let name of VariantList" value="{{name.ID}}"> {{name.Name}} </option>
+                  </select>
+                  <div *ngIf="Vari.touched && Vari.invalid">
+                      <small class="text-danger">Varient name is Required</small>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+
+              <div class="col-lg-5 col-md-5">
+                  <label>Intimation Status</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <select class="form-control" name="Intimationstatus" [(ngModel)]="intimation.IntimationStatus" >
+                      <option *ngFor="let name of Intimationstatus1" value="{{name.ID}}">{{name.Name}} </option>
+
+                  </select>
+                 
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Inception Location To <b class="text-danger" >*</b> </label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <textarea class="form-control" required name="InspectionLocationTo" [(ngModel)]="intimation.InspectionLocationTo" type="text"  autocomplete="off" #InspectLocTo="ngModel"
+                      [class.is-invalid]="InspectLocTo.invalid && InspectLocTo.touched" minlength="4"
+                      [class.is-valid]="InspectLocTo.valid"></textarea>
+                  <div *ngIf="InspectLocTo.errors && (InspectLocTo.invalid && InspectLocTo.touched)">
+                      <small class="text-danger" *ngIf="InspectLocTo?.errors.required"> Enter location</small>
+                       
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Payment Mode</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <select class="form-control" name="PaymentMode" [(ngModel)]
+                      ="intimation.PaymentMode" required #PayMode="ngModel" [class.is-valid]="PayMode.valid" [class.is-invalid]="PayMode.invalid && PayMode.touched">
+                      <option *ngFor="let name of PaymentMode1" value="{{name.ID}}">{{name.Name}} </option>
+                     
+                  </select>
+                  <div *ngIf="PayMode.touched && PayMode.invalid">
+                          <small class="text-danger"> Payment Mode  is Required</small>
+                      </div>
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Intimation Date </label>
+              </div>
+              <div class="col-lg-7 col-md-7 form-group">
+                  <div class="input-group" [owlDateTimeTrigger]="dt1">
+                      <input placeholder="Please Select Date" required class="form-control border-right-0" name="IntimationDate" id="IntimationDate" [(ngModel)]="intimation.IntimationDate" [owlDateTime]="dt1" autocomplete="off">
+                      <owl-date-time #dt1 ></owl-date-time>
+                      <span class="input-group-addon bg-white border-left-0"><i class="ti ti-calendar"></i></span>
+                  </div>
+              </div>
+          </div>
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>CCE</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <input type="text" class="form-control mobile-text-box" name="CCE" [(ngModel)]="intimation.CCE">
+              </div>
+          </div>
+
+
+      </div>
+
+  </div>
+  <hr>
+
+
+
+ 
+  <div class="col-md-12" >
+      <div class="float-right">
+          <label class="amit"  (click)="showhide()">Edit Status</label>
+      </div>
+
+  </div>
+  <!-- <div class="row mt-4" >
+      <div class="col-lg-6 float-left">
+          <label class="amit">Intimation Status</label>
+      </div>
+   </div> -->
+  <hr>
+
+
+  <div class="row" *ngIf="isHide">
+      <div class="col-lg-6">
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Intimation Status</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <select class="form-control" name="Intimationstatus" [(ngModel)]="intimation.IntimationStatus" >
+                      <option *ngFor="let name of Intimationstatus1" value="{{name.ID}}">{{name.Name}} </option>
+
+                  </select>
+                 
+              </div>
+          </div>
+
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Step status</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                      <select class="form-control" name="StepStatus" [(ngModel)]="intimation.IntimationStatus" >
+                      <option *ngFor="let name of Intimationstatus1" value="{{name.ID}}">{{name.Name}} </option>
+
+                  </select>
+                 
+              </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>Surveyor </label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <select class="form-control" name="Surveyor" [(ngModel)]="intimation.Surveyor" >
+                  <option *ngFor="let name of SurveyorList" value="{{name.UserID}}">{{name.Name}} </option>
+
+              </select>
+             
+             </div>
+          </div>
+
+          <div class="row mt-2">
+              <div class="col-lg-5 col-md-5">
+                  <label>  Intimation Remark</label>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <textarea class="from-control mobile-text-box"  name="IntimationRemark" [(ngModel)]="intimation.IntimationRemark"></textarea>
+              </div>
+          </div>
+      </div>
+
+          <div class="col-lg-6">
+              <div class="row mt-2">
+                  <div class="col-lg-5 col-md-5">
+                      <label> Extra KM</label>
+                  </div>
+                  <div class="col-lg-7 col-md-7">
+                      <input class="from-control mobile-text-box"  name="ExtraKM" [(ngModel)]="intimation.ExtraKm">
+                  </div>
+              </div>
+              <div class="row mt-2">
+                  <div class="col-lg-5 col-md-5">
+                      <label> Appointment On</label>
+                  </div>
+                  <div class="col-lg-7 col-md-7">
+                      <div class="input-group" [owlDateTimeTrigger]="dt2">
+                          <input placeholder="Please Select Date" required class="form-control border-right-0" name="AppointmentOn" id="AppointmentOn" [(ngModel)]="intimation.AppointmentOn" [owlDateTime]="dt2" autocomplete="off">
+                          <owl-date-time #dt2 ></owl-date-time>
+                          <span class="input-group-addon bg-white border-left-0"><i class="ti ti-calendar"></i></span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      
+  </div>
+  <div class="row">
+      <div class="form-group">
+          <button type="submit"  class="btn btn-primary">{{label}}</button>
+      </div>
+      <div class="form-group">
+          <button type="button"  class="btn btn-secondary" style="margin-left: 10px" (click)="agentForm.reset()">Clear</button>
+      </div>
+  </div>
+</form>
+</div>

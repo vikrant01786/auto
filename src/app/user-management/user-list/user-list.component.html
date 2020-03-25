@@ -1,0 +1,46 @@
+<div class="container-fluid mt-1">
+    <div class="card border">
+        <div class="card-header">
+                <button class="btn btn-primary float-right" routerLink="/user-management/user/0" > <i class="fas fa-user-plus"></i>&nbsp; Add User</button>
+            <h4>User List</h4>
+            
+        </div>
+  
+        
+        <article class="card-body">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-striped table-responsive-lg
+                table-responsive-md table-responsive-sm table-responsive-xl" style="width: 100% !important">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>MobileNo</th>
+                        <th>AlternateNo</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>UserRole</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; let i = index" style="white-space: nowrap;">
+                        <td> <i class="fas fa-edit" [routerLink]="['/user-management/user',user.UserID]"
+                            title="Edit Details " style="color: rgb(37, 75, 179);"></i>&nbsp;
+                            <i class="fa fa-times" (click)="deleteUser(user.UserID)"
+                                title="Cancel Intimation" style="color:red;"></i>
+                        </td>
+                      
+                        <td> {{i+1}} </td>
+                        <td> {{user.Name | titlecase}}  </td>
+                        <td> {{user.MobileNo}} </td>
+                        <td> {{user.AlternateNo}} </td>
+                        <td> {{user.Email}} </td>
+                        <td> {{user.Address}} </td>
+                        <td> {{user.UserRole}} </td>
+                    </tr>
+                </tbody>
+            </table>
+  
+        </article>
+    </div>
+  </div>

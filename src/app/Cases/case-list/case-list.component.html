@@ -1,0 +1,452 @@
+<div class="container-fluid">
+    <!-- <ngx-spinner bdOpacity=0.9 bdColor="#333" size="medium" color="#fff" type="cube-transition" [fullScreen]="true">
+        <p style="color: white"> Loading... </p>
+
+    </ngx-spinner> -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-pills" role="tablist">
+
+                <li class="nav-item" *ngIf="loggedInuser.UserName === 'Admin'">
+                    <a class="nav-link " data-toggle="pill" (click)="getCaseList('FreshCaseList')">Fresh Case</a>
+                </li>
+                <li class="nav-item" *ngIf="loggedInuser.UserName === 'Admin'">
+                    <a class="nav-link" data-toggle="pill" (click)="getCaseList('ScheduledList')">Survey In Progress</a>
+                </li>
+                <li class="nav-item" *ngIf="loggedInuser.UserName === 'Admin' || loggedInuser.UserName === 'QC'">
+                    <a class="nav-link" data-toggle="pill" (click)="getCaseList('QC')">QC</a>
+                </li>
+                
+                <li class="nav-item" *ngIf="loggedInuser.UserName === 'Admin' || loggedInuser.UserName === 'QC'">
+                    <a class="nav-link" data-toggle="pill" (click)="getCaseList('QCHold')">QC Hold</a>
+                </li>
+                <li class="nav-item" *ngIf="loggedInuser.UserName === 'Admin'">
+                    <a class="nav-link" data-toggle="pill" (click)="getCaseList('Completed')">Completed</a>
+                </li>
+                <li class="nav-item" *ngIf="loggedInuser.UserName === 'Admin'">
+                    <a class="nav-link" data-toggle="pill" (click)="getCaseList('Cancelled')">Cancelled</a>
+                </li>
+                <li class="nav-item" *ngIf="loggedInuser.UserName === 'Admin'">
+                    <a class="nav-link" data-toggle="pill" (click)="getCaseList('ReportUploaded')">Report Uploaded</a>
+                </li>
+            </ul>
+
+            <hr>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table-bordered">
+                <thead>
+                    <tr>
+                        <!-- <th>Ref.No.</th> -->
+                        <th>Insurer Ref.No.</th>
+                        <th>Insurer</th>
+                        <th>Veh.Cat.</th>
+                        <th>Veh. Reg.No. </th>
+                        <th>Inspection Location</th>
+                        <th>Ro Office</th>
+                        <th>Intimation Date</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let UserIntimation of UserIntimations; let i = index" style="white-space: nowrap;">
+                        <!-- <td>{{UserIntimation.RefNo}}</td> -->
+                        <td>{{UserIntimation.InsurerRefNo}}</td>
+                        <td>{{UserIntimation.InsurerName}}</td>
+                        <td>{{UserIntimation.VehicleType}}</td>
+                        <td>{{UserIntimation.VehicleRegistrationNo}}</td>
+                        <td>{{UserIntimation.StartingLocationFrom}}</td>
+                        <td>{{UserIntimation.ROOffice}}</td>
+                        <td>{{UserIntimation.IntimationDate}}</td>
+
+                        <td class="iconshover ">
+                            <div *ngIf="QcIcons">
+                                <i class="fas fa-edit"
+                                    [routerLink]="['/Dashboard/new-intimation',UserIntimation.IntimationID]"
+                                    title="Edit Details " style="color: red;"></i>&nbsp;
+
+                                <i class="fas fa-pen"
+                                    [routerLink]="['/Cases/update-detail' + '/' + UserIntimation.IntimationID]"
+                                    (click)="selectCase(UserIntimation)" title="Update Details"
+                                    style="color:green;"></i>&nbsp;
+
+                                <i class="far fa-comment" data-toggle="modal" (click)="selectCase(UserIntimation)"
+                                    data-target="#myModal1" title="Update Remarks" style="color:brown;"></i>&nbsp;
+
+                                <i class="fas fa-envelope" data-toggle="modal" data-target="#myModal4"
+                                    (click)="sendUserintimationDetailsToModalPop(UserIntimation)"
+                                    title="Send Status mail" style="color:darkblue;"></i>&nbsp;
+
+                                <i class="fas fa-book" data-toggle="modal" data-target="#myModal3" title="View History"
+                                    style="color:purple;"></i>&nbsp;
+
+                                <i class="far fa-eye"
+                                    [routerLink]="['/Cases/view-report'+ '/' + UserIntimation.IntimationID]"
+                                    data-toggle="tooltip" title="View Report" style="color: red;"></i>
+
+                            </div>
+
+                            <div *ngIf="QcHoldIcons">
+                                <i class="fas fa-edit"
+                                    [routerLink]="['/Dashboard/new-intimation',UserIntimation.IntimationID]"
+                                    title="Edit Details " style="color: red;"></i>
+
+                                <i class="fas fa-pen"
+                                    [routerLink]="['/Cases/valuation-details' + '/' + UserIntimation.IntimationID]"
+                                    (click)="selectCase(UserIntimation)" title="Update Details"
+                                    style="color:green;"></i>&nbsp;
+
+                                <i class="far fa-eye" data-toggle="tooltip"
+                                    [routerLink]="['/Cases/view-report'+ '/' + UserIntimation.IntimationID]"
+                                    title="View Report" style="color:red; "></i>&nbsp;
+
+                                <i class="far fa-comment" data-toggle="modal" (click)="selectCase(UserIntimation)"
+                                    data-target="#myModal1" title="Update Remarks" style="color:brown;"></i>
+                                <i class="fas fa-envelope" data-toggle="modal" data-target="#myModal4"
+                                    (click)="sendUserintimationDetailsToModalPop(UserIntimation)"
+                                    title="Send Status mail" style="color:darkblue;"></i>
+                                <i class="fas fa-book" data-toggle="modal" data-target="#myModal3" title="View History"
+                                    style="color:purple;"></i>
+                            </div>
+                            <div *ngIf="Cancelled">
+                                <i class="fa fa-times" data-toggle="modal" data-target="#myModal2"
+                                    title="Cancel Intimation" style="color:red;"></i>
+                            </div>
+
+                            <div *ngIf="Completed">
+
+                                <i class="far fa-comment" data-toggle="modal" (click)="selectCase(UserIntimation)"
+                                    data-target="#myModal1" title="Update Remarks" style="color:brown;"></i>
+
+                                <i class="far fa-eye" data-toggle="tooltip"
+                                    [routerLink]="['/Cases/view-report'+ '/' + UserIntimation.IntimationID]"
+                                    title="View Report" style="color:red; "></i>&nbsp;
+
+                                <i class="fas fa-download" data-toggle="tooltip" title="Download Report"
+                                    style="color: blue;"></i>&nbsp;
+
+                                <i class="fas fa-envelope" data-toggle="modal" data-target="#myModal4"
+                                    (click)="sendUserintimationDetailsToModalPop(UserIntimation)"
+                                    title="Send Status mail" style="color:darkblue;"></i>
+
+                                <i class="fas fa-book" data-toggle="modal" data-target="#myModal3" title="View History"
+                                    style="color:purple;"></i>
+                            </div>
+
+                            <div *ngIf="FreshCaseList">
+                                <i class="fas fa-retweet" data-toggle="modal" (click)="selectCase(UserIntimation)"
+                                    data-target="#myModal" title="Change RO" style="color: blue;"></i>
+                                <i class="fas fa-edit"
+                                    [routerLink]="['/Dashboard/new-intimation',UserIntimation.IntimationID]"
+                                    title="Edit Details " style="color: red;"></i>
+                                <i class="far fa-comment" data-toggle="modal" (click)="selectCase(UserIntimation)"
+                                    data-target="#myModal1" title="Update Remarks" style="color:brown;"></i>
+                                <i class="fas fa-envelope" data-toggle="modal" data-target="#myModal4"
+                                    (click)="sendUserintimationDetailsToModalPop(UserIntimation)"
+                                    title="Send Status mail" style="color:darkblue;"></i>
+                                <i class="fa fa-times" data-toggle="modal" data-target="#myModal2"
+                                    title="Cancel Intimation" style="color:red;"></i>
+                                <i class="fas fa-book" data-toggle="modal" data-target="#myModal3" title="View History"
+                                    style="color:purple;"></i>
+                            </div>
+
+                            <div *ngIf="ScheduledList">
+                                <i class="fas fa-retweet" data-toggle="modal" (click)="selectCase(UserIntimation)"
+                                    data-target="#myModal" title="Change RO" style="color: blue;"></i>&nbsp;
+                                <i class="fas fa-edit"
+                                    [routerLink]="['/Dashboard/new-intimation',UserIntimation.IntimationID]"
+                                    title="Edit Details " style="color: red;"></i>
+                                <i class="far fa-comment" data-toggle="modal" (click)="selectCase(UserIntimation)"
+                                    data-target="#myModal1" title="Update Remarks" style="color:brown;"></i>
+                                <i class="fas fa-envelope" data-toggle="modal" data-target="#myModal4"
+                                    (click)="sendUserintimationDetailsToModalPop(UserIntimation)"
+                                    title="Send Status mail" style="color:darkblue;"></i>
+                                <i class="fa fa-times" data-toggle="modal" data-target="#myModal2"
+                                    [routerLink]="['/Dashboard/new-intimation',UserIntimation.IntimationID]"
+                                    (click)="deleteCases(UserIntimation.IntimationID)" title="Cancel Intimation"
+                                    style="color:red;"></i>
+                                <i class="fas fa-book" data-toggle="modal" data-target="#myModal3" title="View History"
+                                    style="color:purple;"></i>
+                            </div>
+
+                            <div *ngIf="ReportUploaded">
+
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <form class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Change Intimation (Ref. No. ---) To RO Office</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row ">
+                        <div class="col-lg-5 col-md-5">
+                            <label> Choose Regional Office <b class="text-danger">*</b></label>
+                        </div>
+                        <div class="col-lg-7 col-md-7">
+                            <select class="form-control" name="Office" [(ngModel)]="selectedIntimation.ROOffice"
+                                [class.is-invalid]="office.invalid && office.touched" #office="ngModel" required>
+                                <option value="">Select Regional Office</option>
+                                <option *ngFor="let name of RoOffice1" value="{{name.ID}}">{{name.Name}}</option>
+                            </select>
+                            <div *ngIf="office.errors && (office.invalid && office.touched)">
+                                <small class="text-danger" *ngIf="office?.errors.required">This Field is
+                                    Required</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-lg-5 col-md-5">
+                            <label>Remarks <b class="text-danger">*</b></label>
+                        </div>
+                        <div class="col-lg-7 col-md-7">
+                            <textarea type="text" [(ngModel)]="selectedIntimation.Remarks"
+                                class="form-control mobile-text-box" name="Remarks"
+                                [class.is-invalid]="remark.invalid && remark.touched" #remark="ngModel"
+                                required></textarea>
+                            <div *ngIf="remark.errors && (remark.invalid && remark.touched)">
+                                <small class="text-danger" *ngIf="remark?.errors.required">This Field is
+                                    Required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" (click)="saveIntimation();"
+                        data-dismiss="modal">Assign</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 3rdicon -->
+<div class="container">
+
+    <div class="modal fade" id="myModal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Remarks</h4>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="row mt-2">
+                        <div class="col-lg-5 col-md-5">
+                            <label>Remarks <b class="text-danger">*</b></label>
+                        </div>
+                        <div class="col-lg-7 col-md-7">
+                            <textarea type="text" class="form-control mobile-text-box" name="Remarks"
+                                [(ngModel)]="selectedIntimation.Remarks"
+                                [class.is-invalid]="remark.invalid && remark.touched" #remark="ngModel"
+                                required></textarea>
+                            <div *ngIf="remark.errors && (remark.invalid && remark.touched)">
+                                <small class="text-danger" *ngIf="remark?.errors.required">This Field is
+                                    Required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" (click)="saveIntimation();"
+                        data-dismiss="modal">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- 4thicon -->
+<div class="container">
+    <form>
+        <div class="modal fade" id="myModal4">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Status Mail</h4>
+
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="row ">
+                            <div class="col-lg-12 col-md-12">
+                                <label>To Mail ID <b class="text-danger">*</b></label>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <input type="text" name="Email" #Email class="form-control mobile-text-box"
+                                    name="Remarks">
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-lg-12 col-md-12">
+                                <label>Mail Content <b class="text-danger">*</b></label>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <textarea class="form-control" name="MailContent" #MailContent style="height:200px;">
+                                Dear Sir/Madam,
+                                Kindly Note The below Mentioned Status Details for   RefNo : {{InsurerRefNo}}
+                                InsurerName :{{InsurerNameDes}}
+                                DivisionName :{{DivisionDes}}
+                                Intimation Date :{{IntimationDate}}
+                                Caller Name :{{ContactPersonMobileNo}}
+                                Proposer Name :{{InsuredName}}
+                                Registration No:{{VehicleRegistrationNo}}
+                                Engine No  : &nbsp;{{EngineNo === null? '-': EngineNo}}
+                                Chassis No  : &nbsp; {{ChassisNo === null? '-':ChassisNo}}
+                                Manufacturer :{{ManufacturerDes}}
+                                PreInspection Status is: :{{IntimationStatusDes}}
+                                Remarks :{{Remarks}}
+                                The information contained in this electronic message (email) and any attachments to this email are for the exclusive use of the addressee(s) and access to this email by any one intended else is unauthorized. The email may contain proprietary,confidential or privileged information or information relating to AUTOSURE. If you are not the intended recipient, please notify the sender by telephone, or return email and delete this communication and any attachments thereto, immediately from your computer. Any dissemination, distribution, or copying of this communication and the attachments thereto (in whole or part), in any manner, is strictly prohibited and actionable at law. The recipient acknowledges that emails are susceptible to alteration and their integrity can not be guaranteed and that Company does not guarantee that any e-mail is virus-free and accept no liability for any damage caused by any virus transmitted by this email. 
+                            </textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="SendEmail(Email.value,MailContent.value)"
+                            data-dismiss="modal">Send</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+<!-- 5thicon -->
+<div class="container">
+
+    <div class="modal fade" id="myModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Autoinspekt.com says</h4>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+
+
+                    <div class="row mt-2">
+
+                        <label>Are you sure to cancel this intimation? </label>
+
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- 6thicon -->
+<div class="container">
+
+    <div class="modal fade" id="myModal3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Intimation History(Ref. No....)</h4>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <div class="row mt-5">
+                        <div class="col-md-12">
+                            <table style="width:100%" class="row-border hover table-bordered">
+                                <thead>
+                                    <tr>
+
+                                        <th>S.No.</th>
+                                        <th>Date & Time</th>
+                                        <th>Action</th>
+                                        <th>Remarks</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>1</td>
+                                        <td>dv</td>
+                                        <td>edfv</td>
+                                        <td>dfvsd</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

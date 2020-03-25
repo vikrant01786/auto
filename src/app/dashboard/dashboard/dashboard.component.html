@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 mt-2">
+      <h5>Dashboard(september/2019)<i class="fas fa-eye-slash"></i></h5>
+
+    </div>
+    <div class="col-md-6 mt-2">
+      <div class="float-right">
+        <label>PIV2/dashboard</label>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12" style="text-align: right;">
+      <div style="display: inline-block;padding: 8px;">
+        <input type="checkbox">
+        <label>Show Total Count</label>
+      </div>
+      <div style="display: inline-block;padding: 8px;">
+        <select class="py-2">
+          <option>Select Month</option>
+          <option>January</option>
+          <option>Fabuary</option>
+          <option>March</option>
+          <option>April</option>
+          <option>May</option>
+          <option>June</option>
+          <option>July</option>
+          <option>August</option>
+          <option>September</option>
+          <option>October</option>
+          <option>November</option>
+          <option>December</option>
+        </select>
+      </div>
+      <div style="display: inline-block;padding: 8px;">
+        <select class="py-2">
+          <option>Select Year</option>
+          <option>2019</option>
+          <option>2018</option>
+          <option>2017</option>
+          <option>2016</option>
+        </select>
+        <button class="ml-2 btn btn-danger btn-sm" type="button">Filter</button>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class=col-md-3>
+      <div class="card border1">
+        <div class="card-body border2 bg-info "><i class="fas fa-tasks white"></i>
+          <label class="float-right"><b>Fresh Case</b></label>
+        </div>
+        <div class="card-footer"><a routerLink="/Cases/fresh-case"><b>View Details </b><i class=" float-right fas fa-arrow-right" ></i></a></div>
+      </div>
+    </div>
+    <div class=col-md-3>
+      <div class="card border1">
+        <div class="card-body border2 bg"><i class="fas fa-calendar-alt white"></i>
+          <label class="float-right"><b>Scheduled</b></label>
+        </div>
+        <div class="card-footer"><a routerLink="/Cases/scheduled"><b>View Details</b> <i class=" float-right fas fa-arrow-right" ></i></a></div>
+      </div>
+    </div>
+    <div class=col-md-3>
+      <div class="card border1">
+        <div class="card-body border2 bg-success"><i class="fas fa-check white"></i>
+          <label class="float-right"><b>Survey Done</b></label>
+        </div>
+        <div class="card-footer"><a  routerLink="/Cases/survey-done">View Details <i class=" float-right fas fa-arrow-right" ></i></a></div>
+      </div>
+    </div>
+    <div class=col-md-3>
+      <div class="card border1">
+        <div class="card-body border2 bg-warning "><i class="fas fa-hourglass-half white"></i>
+          <label class="float-right"><b>Qc</b></label>
+        </div>
+        <div class="card-footer"><a routerLink="/Cases/qc">View Details <i class=" float-right fas fa-arrow-right" ></i></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class=col-md-3>
+      <div class="card border1">
+        <div class="card-body border2 bg-primary"><i class="fas fa-thumbs-up white"></i>
+          <label class="float-right">Completed</label>
+        </div>
+        <div class="card-footer"><a routerLink="/Cases/completed">View Details <i class=" float-right fas fa-arrow-right" ></i></a></div>
+      </div>
+    </div>
+    <div class=col-md-3>
+      <div class="card border1">
+        <div class="card-body border2  bg-secondary "><i class="far fa-window-close white"></i>
+          <label class="float-right"><b>Cancelled</b></label>
+        </div>
+        <div class="card-footer"><a  routerLink="/Cases/cancelled">View Details <i class="float-right fas fa-arrow-right"></i></a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <table datatable class="row-border hover">
+        <thead>
+          <tr>
+            <th>ROName</th>
+            <th>Fresh</th>
+            <th>scheduled</th>
+            <th>Survey Done</th>
+            <th>QC</th>
+            <th>Completed</th>
+            <th>Cancelled</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="jj">
+            <td>Maharastra Ro-2</td>
+            <td>72</td>
+            <td>228</td>
+            <td>35</td>
+            <td>17</td>
+            <td>1970</td>
+            <td>712</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1291 @@
+<div class="container-fluid">
+ 
+  <form>
+  <div class="row">
+      <div class="col-md-6">
+          <h5>Quality Check - Commercial [ Ref. No.: ... ]
+          </h5>
+
+      </div>
+      <div class="col-md-6">
+          <div class="float-right">
+              <label class="amit">QC</label>
+          </div>
+      </div>
+  </div>
+  <hr>
+
+  
+      <div class="row">
+        <div class="col-lg-4">
+         <div class="card" style="border:thin;background-color: #c2d6d6; padding: 8px;">
+           <!-- <perfect-scrollbar style="overflow-y: hidden;max-width: 600px;max-height: 400px;">  -->
+          <div class="row mt-2">
+            <div class="col-lg-6 float-left">
+                <label>Status Detail</label>
+            </div>
+          </div>
+          <hr>
+           <div class="row">
+             <div class=col-md-12>
+                  <label>Insurer</label>
+                     <input type="text" class="form-control mobile-text-box"  name="InsurerNameDes" [(ngModel)]="user.InsurerNameDes" >
+             </div>
+           </div>
+
+        <div class="row">
+          <div class=col-md-12>
+               <label>Insurer Division</label>
+                  <input type="text" class="form-control"  name="DivisionDes" [(ngModel)]="user.DivisionDes" >
+          </div>
+        </div>
+
+       <div class="row">
+        <div class=col-md-12>
+             <label>Insurer Branch</label>
+                <input type="text" class="form-control" name="BranchDes" [(ngModel)]="user.BranchDes" >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Insurer Ref.No.</label>
+                <input type="text" class="form-control" name="InsurerRefNo" [(ngModel)]="user.InsurerRefNo" >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Proposer / Insured Name</label>
+                <input type="text" class="form-control" name="InsuredName" [(ngModel)]="user.InsuredName" >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Proposer / Insured Mobile No</label>
+                <input type="text" class="form-control"  name="InsuredMobileNo" [(ngModel)]="user.InsuredMobileNo">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Payment Mode</label>
+                <select  class="form-control" name="PaymentMode" [(ngModel)]="user.PaymentMode" >
+                <option *ngFor="let name of PaymentMode1" value="{{name.ID}}">{{name.Name}} </option>
+
+                </select>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Vehicle Category</label>
+                <select  class="form-control"  name="VehicleType" id="VehicleType" [(ngModel)]
+                ="user.VehicleType" >
+                <option *ngFor="let name of VehicleType1" value="{{name.ID}}">{{name.Name}} </option>
+
+                </select>
+                
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Vehicle Reg No. <b class="text-danger" >*</b></label>
+                <input type="text" class="form-control"  name="VehicleRegistrationNo"  [(ngModel)] ="user.VehicleRegistrationNo">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label> 4 Wheeler Type <b class="text-danger" >*</b></label>
+                <select  class="form-control" name="FourWheelerType" id="FourWheelerType" [(ngModel)]
+                ="user.FourWheelerType" required #FourWheelType="ngModel" [class.is-valid]="FourWheelType.valid" [class.is-invalid]="FourWheelType.invalid && FourWheelType.touched">
+                <option *ngFor="let name of FourWheelerType1" value="{{name.ID}}">{{name.Name}} </option>
+
+                </select>
+                <div *ngIf="FourWheelType.touched && FourWheelType.invalid">
+                  <small class="text-danger"> This Field is Required</small>
+              </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Receipt No. <b class="text-danger" >*</b></label>
+                <input type="text" class="form-control" name="ReceiptNo"  [(ngModel)] ="user.ReceiptNo" >
+          </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Engine No. <b class="text-danger" >*</b></label>
+                <input type="text" class="form-control" name="EngineNo"  [(ngModel)] ="user.EngineNo">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Chassis No. <b class="text-danger" >*</b></label>
+                <input type="text" class="form-control" name="ChassisNo"  [(ngModel)] ="user.ChassisNo">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Manufacturing Year <b class="text-danger" >*</b></label>
+                <select  class="form-control" name="ManufactureYear" id="ManufactureYear" [(ngModel)]
+                ="user.ManufactureYear" required #ManufactYear="ngModel" [class.is-valid]="ManufactYear.valid" [class.is-invalid]="ManufactYear.invalid && ManufactYear.touched">
+                <option *ngFor="let name of ManufactureYear1" value="{{name.ID}}">{{name.Name}} </option>
+
+                </select>
+                <div *ngIf="ManufactYear.touched && ManufactYear.invalid">
+                  <small class="text-danger">  This Field is Required</small>
+              </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Manufacturer <b class="text-danger" >*</b></label>
+                <select  class="form-control" name="Manufacturer" id="Manufacturer" [(ngModel)]
+                ="user.Manufacturer" required #Manufcturer="ngModel" [class.is-valid]="Manufcturer.valid" [class.is-invalid]="Manufcturer.invalid && Manufcturer.touched">
+                <option *ngFor="let name of ManufacturerList" value="{{name.ID}}">{{name.Name}} </option>
+
+                </select>
+                <div *ngIf="Manufcturer.touched && Manufcturer.invalid">
+                  <small class="text-danger"> This Field is Required</small>
+              </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Model <b class="text-danger" >*</b></label>
+                <select  class="form-control" name="ModelDes" id="ModelDes" [(ngModel)]
+                ="user.ModelDes" required #Modl="ngModel" [class.is-valid]="Modl.valid" [class.is-invalid]="Modl.invalid && Modl.touched">
+                <option *ngFor="let name of ModelList" value="{{name.ID}}">{{name.Name}} </option>
+
+                </select>
+                <div *ngIf="Modl.touched && Modl.invalid">
+                  <small class="text-danger"> This Field is Required</small>
+              </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Variant</label>
+                <select  class="form-control" name="VarientDes"  [(ngModel)]="user.VarientDes">
+
+                </select>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Status Of</label>
+                <input type="text" class="form-control" name="StatusOf"  [(ngModel)] ="user.StatusOf">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Update Status<b class="text-danger" >*</b></label>
+                <select  class="form-control" name="UpdateStatus" id="UpdateStatus" [(ngModel)]
+                ="user.UpdateStatus" required #UpdtStatus="ngModel" [class.is-valid]="UpdtStatus.valid" [class.is-invalid]="UpdtStatus.invalid && UpdtStatus.touched">
+                <option *ngFor="let name of UpdateStatus1" value="{{name.ID}}">{{name.Name}} </option>
+
+                </select>
+                <div *ngIf="UpdtStatus.touched && UpdtStatus.invalid">
+                  <small class="text-danger">this field  is Required</small>
+              </div>
+        </div>
+        </div>
+     
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Extra Kilometer</label>
+                <input type="text" class="form-control" name="ExtraKilometer"  [(ngModel)] ="user.ExtraKilometer">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Manual Report No.</label>
+                <input type="text" class="form-control"  name="ManualReportNo"  [(ngModel)] ="user.ManualReportNo">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=col-md-12>
+             <label>Under Taking Slip No.</label>
+                <input type="text" class="form-control"  name="UnderTakingSlipNo"  [(ngModel)] ="user.UnderTakingSlipNo">
+        </div>
+      </div>
+
+     <hr>
+
+     <div class="row">
+      <div class="col-lg-6 float-left">
+          <label>Question Screen</label>
+      </div>
+     </div>
+     <hr>
+     
+     <div class="row">
+      <div class=col-md-12>
+           <label>Vehicle Location<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="VehicleLocation" id="VehicleLocation" [(ngModel)]
+              ="user.VehicleLocation" required #VehLoc="ngModel" [class.is-valid]="VehLoc.valid" [class.is-invalid]="VehLoc.invalid && VehLoc.touched">
+              <option *ngFor="let name of VehicleLocation1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="VehLoc.touched && VehLoc.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label> Cng/Lpg Fitted <b class="text-danger" >*</b></label>
+              <select  class="form-control"  name="CngLpgFitted" id="CngLpgFitted" [(ngModel)]
+              ="user.CngLpgFitted" required #CngLpgFit="ngModel" [class.is-valid]="CngLpgFit.valid" [class.is-invalid]="CngLpgFit.invalid && CngLpgFit.touched">
+              <option *ngFor="let name of CngLpgFitted1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="CngLpgFit.touched && CngLpgFit.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Cng/Lpg Endorsd in RC</label>
+              <select  class="form-control" name="CngLpgEndorsdinRC" id="CngLpgEndorsdinRC" [(ngModel)]
+              ="user.CngLpgEndorsdinRC" required #CngLpgRC="ngModel" [class.is-valid]="CngLpgRC.valid" [class.is-invalid]="CngLpgRC.invalid && CngLpgRC.touched">
+              <option *ngFor="let name of CngLpgEndorsdinRC1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="CngLpgRC.touched && CngLpgRC.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Front No. Plate<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FrontNoPlate" id="FrontNoPlate" [(ngModel)]
+              ="user.FrontNoPlate" required #FrntNoPlt="ngModel" [class.is-valid]="FrntNoPlt.valid" [class.is-invalid]="FrntNoPlt.invalid && FrntNoPlt.touched">
+              <option *ngFor="let name of FrontNoPlate1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="FrntNoPlt.touched && FrntNoPlt.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Rear No. Plate<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RearNoPlate" id="RearNoPlate" [(ngModel)]
+              ="user.RearNoPlate" required #RearNoPlt="ngModel" [class.is-valid]="RearNoPlt.valid" [class.is-invalid]="RearNoPlt.invalid && RearNoPlt.touched">
+              <option *ngFor="let name of RearNoPlate1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RearNoPlt.touched && RearNoPlt.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+     <div class="col-lg-6 float-left">
+         <label>Damage Detail-1</label>
+     </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Front Bumper<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FrontBumper" id="FrontBumper" [(ngModel)]
+              ="user.FrontBumper" required #FrntBmper="ngModel" [class.is-valid]="FrntBmper.valid" [class.is-invalid]="FrntBmper.invalid && FrntBmper.touched">
+              <option *ngFor="let name of FrontBumper1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="FrntBmper.touched && FrntBmper.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Grill<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="Grill" id="Grill" [(ngModel)]
+              ="user.Grill" required #Gril="ngModel" [class.is-valid]="Gril.valid" [class.is-invalid]="Gril.invalid && Gril.touched">
+              <option *ngFor="let name of Grill1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="Gril.touched && Gril.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Head Lamp (LT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="HeadLampLT" id="HeadLampLT" [(ngModel)]
+              ="user.HeadLampLT" required #HeadLmpLT="ngModel" [class.is-valid]="HeadLmpLT.valid" [class.is-invalid]="HeadLmpLT.invalid && HeadLmpLT.touched">
+              <option *ngFor="let name of HeadLampLT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="HeadLmpLT.touched && HeadLmpLT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Head Lamp (RT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="HeadLampRT" id="HeadLampRT" [(ngModel)]
+              ="user.HeadLampRT" required #HeadLmpRT="ngModel" [class.is-valid]="HeadLmpRT.valid" [class.is-invalid]="HeadLmpRT.invalid && HeadLmpRT.touched">
+              <option *ngFor="let name of HeadLampRT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="HeadLmpRT.touched && HeadLmpRT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Indicator Light (LT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="IndicatorLightLT" id="IndicatorLightLT" [(ngModel)]
+              ="user.IndicatorLightLT" required #IndictorLightLT="ngModel" [class.is-valid]="IndictorLightLT.valid" [class.is-invalid]="IndictorLightLT.invalid && IndictorLightLT.touched">
+              <option *ngFor="let name of IndicatorLightLT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="IndictorLightLT.touched && IndictorLightLT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Indicator Light (RT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="IndicatorLightRT" id="IndicatorLightRT" [(ngModel)]
+              ="user.IndicatorLightRT" required #IndictorLightRT="ngModel" [class.is-valid]="IndictorLightRT.valid" [class.is-invalid]="IndictorLightRT.invalid && IndictorLightRT.touched">
+              <option *ngFor="let name of IndicatorLightRT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="IndictorLightRT.touched && IndictorLightRT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Fog Lamp (LT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FogLampLT" id="FogLampLT" [(ngModel)]
+              ="user.FogLampLT" required #FogLmpLT="ngModel" [class.is-valid]="FogLmpLT.valid" [class.is-invalid]="FogLmpLT.invalid && FogLmpLT.touched">
+              <option *ngFor="let name of FogLampLT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="FogLmpLT.touched && FogLmpLT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Fog Lamp (RT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FogLampRT" id="FogLampRT" [(ngModel)]
+              ="user.FogLampRT" required #FogLmpRT="ngModel" [class.is-valid]="FogLmpRT.valid" [class.is-invalid]="FogLmpRT.invalid && FogLmpRT.touched">
+              <option *ngFor="let name of FogLampRT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="FogLmpRT.touched && FogLmpRT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Front Panel <b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FrontPanel" id="FrontPanel" [(ngModel)]
+              ="user.FrontPanel" required #FrntPanel="ngModel" [class.is-valid]="FrntPanel.valid" [class.is-invalid]="FrntPanel.invalid && FrntPanel.touched">
+              <option *ngFor="let name of FrontPanel1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="FrntPanel.touched && FrntPanel.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Bonnet<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="Bonnet" id="Bonnet" [(ngModel)]
+              ="user.Bonnet" required #Bonet="ngModel" [class.is-valid]="Bonet.valid" [class.is-invalid]="Bonet.invalid && Bonet.touched">
+              <option *ngFor="let name of Bonnet1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="Bonet.touched && Bonet.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Left Apron<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LeftApron" id="LeftApron" [(ngModel)]
+              ="user.LeftApron" required #LeftAprn="ngModel" [class.is-valid]="LeftAprn.valid" [class.is-invalid]="LeftAprn.invalid && LeftAprn.touched">
+              <option *ngFor="let name of LeftApron1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LeftAprn.touched && LeftAprn.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Right Apron<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RightApron" id="RightApron" [(ngModel)]
+              ="user.RightApron" required #RightAprn="ngModel" [class.is-valid]="RightAprn.valid" [class.is-invalid]="RightAprn.invalid && RightAprn.touched">
+              <option *ngFor="let name of RightApron1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RightAprn.touched && RightAprn.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Front Fender<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LTFrontFender" id="LTFrontFender" [(ngModel)]
+              ="user.LTFrontFender" required #LTFrntFender="ngModel" [class.is-valid]="LTFrntFender.valid" [class.is-invalid]="LTFrntFender.invalid && LTFrntFender.touched">
+              <option *ngFor="let name of LTFrontFender1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LTFrntFender.touched && LTFrntFender.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Front Door<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LTFrontDoor" id="LTFrontDoor" [(ngModel)]
+              ="user.LTFrontDoor" required #LTFrntDoor="ngModel" [class.is-valid]="LTFrntDoor.valid" [class.is-invalid]="LTFrntDoor.invalid && LTFrntDoor.touched">
+              <option *ngFor="let name of LTFrontDoor1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LTFrntDoor.touched && LTFrntDoor.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Rear Door<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LTRearDoor" id="LTRearDoor" [(ngModel)]
+              ="user.LTRearDoor" required #LTRearDr="ngModel" [class.is-valid]="LTRearDr.valid" [class.is-invalid]="LTRearDr.invalid && LTRearDr.touched">
+              <option *ngFor="let name of LTRearDoor1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LTRearDr.touched && LTRearDr.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Pillar Door (A) <b class="text-danger" >*</b></label>
+              <select  class="form-control"name="LTPillarDoorA" id="LTPillarDoorA" [(ngModel)]
+              ="user.LTPillarDoorA" required #PillarDoorA="ngModel" [class.is-valid]="PillarDoorA.valid" [class.is-invalid]="PillarDoorA.invalid && PillarDoorA.touched">
+              <option *ngFor="let name of LTPillarDoorA1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="PillarDoorA.touched && PillarDoorA.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Pillar Center (B)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LTPillarCenterB" id="LTPillarCenterB" [(ngModel)]
+              ="user.LTPillarCenterB" required #LTPilarCentrB="ngModel" [class.is-valid]="LTPilarCentrB.valid" [class.is-invalid]="LTPilarCentrB.invalid && LTPilarCentrB.touched">
+              <option *ngFor="let name of LTPillarCenterB1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LTPilarCentrB.touched && LTPilarCentrB.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Pillar Rear (C)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LTPillarRearC" id="LTPillarRearC" [(ngModel)]
+              ="user.LTPillarRearC" required #LTPilarRearC="ngModel" [class.is-valid]="LTPilarRearC.valid" [class.is-invalid]="LTPilarRearC.invalid && LTPilarRearC.touched">
+              <option *ngFor="let name of LTPillarRearC1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LTPilarRearC.touched && LTPilarRearC.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Running Board<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LTRunningBoard" id="LTRunningBoard" [(ngModel)]
+              ="user.LTRunningBoard" required #RunningBoard="ngModel" [class.is-valid]="RunningBoard.valid" [class.is-invalid]="RunningBoard.invalid && RunningBoard.touched">
+              <option *ngFor="let name of LTRunningBoard1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RunningBoard.touched && RunningBoard.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LT Qtr Panel<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LTQtrPanel" id="LTQtrPanel" [(ngModel)]
+              ="user.LTQtrPanel" required #LTQtrPnl="ngModel" [class.is-valid]="LTQtrPnl.valid" [class.is-invalid]="LTQtrPnl.invalid && LTQtrPnl.touched">
+              <option *ngFor="let name of LTQtrPanel1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LTQtrPnl.touched && LTQtrPnl.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Dicky<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="Dicky" id="Dicky" [(ngModel)]
+              ="user.Dicky" required #Diky="ngModel" [class.is-valid]="Diky.valid" [class.is-invalid]="Diky.invalid && Diky.touched">
+              <option *ngFor="let name of Dicky1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="Diky.touched && Diky.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Rear Bumper<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RearBumper" id="RearBumper" [(ngModel)]
+              ="user.RearBumper" required #RearBmpr="ngModel" [class.is-valid]="RearBmpr.valid" [class.is-invalid]="RearBmpr.invalid && RearBmpr.touched">
+              <option *ngFor="let name of RearBumper1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RearBmpr.touched && RearBmpr.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Tail Lamp (LT)<b class="text-danger" >*</b></label>
+              <select  class="form-control"name="TailLampLT" id="TailLampLT" [(ngModel)]
+              ="user.TailLampLT" required #TailLmpLT="ngModel" [class.is-valid]="TailLmpLT.valid" [class.is-invalid]="TailLmpLT.invalid && TailLmpLT.touched">
+              <option *ngFor="let name of TailLampLT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="TailLmpLT.touched && TailLmpLT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Tail Lamp (RT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="TailLampRT" id="TailLampRT" [(ngModel)]
+              ="user.TailLampRT" required #TailLmpRT="ngModel" [class.is-valid]="TailLmpRT.valid" [class.is-invalid]="TailLmpRT.invalid && TailLmpRT.touched">
+              <option *ngFor="let name of TailLampRT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="TailLmpRT.touched && TailLmpRT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Qtr Panel<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTQtrPanel" id="RTQtrPanel" [(ngModel)]
+              ="user.RTQtrPanel" required #RTQtrPnl="ngModel" [class.is-valid]="RTQtrPnl.valid" [class.is-invalid]="RTQtrPnl.invalid && RTQtrPnl.touched">
+              <option *ngFor="let name of RTQtrPanel1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTQtrPnl.touched && RTQtrPnl.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Rear Door<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTRearDoor" id="RTRearDoor" [(ngModel)]
+              ="user.RTRearDoor" required #RTRearDor="ngModel" [class.is-valid]="RTRearDor.valid" [class.is-invalid]="RTRearDor.invalid && RTRearDor.touched">
+              <option *ngFor="let name of RTRearDoor1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTRearDor.touched && RTRearDor.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Front Door<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTFrontDoor" id="RTFrontDoor" [(ngModel)]
+              ="user.RTFrontDoor" required #RTFrontDor="ngModel" [class.is-valid]="RTFrontDor.valid" [class.is-invalid]="RTFrontDor.invalid && RTFrontDor.touched">
+              <option *ngFor="let name of RTFrontDoor1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTFrontDor.touched && RTFrontDor.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Pillar Front (A)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTPillarFrontA" id="RTPillarFrontA" [(ngModel)]
+              ="user.RTPillarFrontA" required #RTPilarFrntA="ngModel" [class.is-valid]="RTPilarFrntA.valid" [class.is-invalid]="RTPilarFrntA.invalid && RTPilarFrntA.touched">
+              <option *ngFor="let name of RTPillarFrontA1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTPilarFrntA.touched && RTPilarFrntA.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Center Pillar (B)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTCenterPillarB" id="RTCenterPillarB" [(ngModel)]
+              ="user.RTCenterPillarB" required #RTCntrPilrB="ngModel" [class.is-valid]="RTCntrPilrB.valid" [class.is-invalid]="RTCntrPilrB.invalid && RTCntrPilrB.touched">
+              <option *ngFor="let name of RTCenterPillarB1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTCntrPilrB.touched && RTCntrPilrB.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Pillar Rear (C)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTPillarRearC" id="RTPillarRearC" [(ngModel)]
+              ="user.RTPillarRearC" required #RTPilrRearC="ngModel" [class.is-valid]="RTPilrRearC.valid" [class.is-invalid]="RTPilrRearC.invalid && RTPilrRearC.touched">
+              <option *ngFor="let name of RTPillarRearC1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTPilrRearC.touched && RTPilrRearC.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Running Board<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTRunningBoard" id="RTRunningBoard" [(ngModel)]
+              ="user.RTRunningBoard" required #RTRuningBord="ngModel" [class.is-valid]="RTRuningBord.valid" [class.is-invalid]="RTRuningBord.invalid && RTRuningBord.touched">
+              <option *ngFor="let name of RTRunningBoard1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTRuningBord.touched && RTRuningBord.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RT Front Fender<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RTFrontFender" id="RTFrontFender" [(ngModel)]
+              ="user.RTFrontFender" required #RTFrntFender="ngModel" [class.is-valid]="RTFrntFender.valid" [class.is-invalid]="RTFrntFender.invalid && RTFrntFender.touched">
+              <option *ngFor="let name of RTFrontFender1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RTFrntFender.touched && RTFrntFender.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+     <div class="col-lg-6 float-left">
+         <label>Damage Detail-2</label>
+     </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class=col-md-12>
+           <label>Floor/Silencer<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FloorSilencer" id="FloorSilencer" [(ngModel)]
+              ="user.FloorSilencer" required #FlrSilencer="ngModel" [class.is-valid]="FlrSilencer.valid" [class.is-invalid]="FlrSilencer.invalid && FlrSilencer.touched">
+              <option *ngFor="let name of FloorSilencer1" value="{{name.ID}}">{{name.Name}} </option>
+              </select>
+              <div *ngIf="FlrSilencer.touched && FlrSilencer.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Under Carriage<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="UnderCarriage" id="UnderCarriage" [(ngModel)]
+              ="user.UnderCarriage" required #UndrCriage="ngModel" [class.is-valid]="UndrCriage.valid" [class.is-invalid]="UndrCriage.invalid && UndrCriage.touched">
+              <option *ngFor="let name of UnderCarriage1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="UndrCriage.touched && UndrCriage.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Rear View Mirror(LT)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RearViewMirrorLT" id="RearViewMirrorLT" [(ngModel)]
+              ="user.RearViewMirrorLT" required #RearViewMirorLT="ngModel" [class.is-valid]="RearViewMirorLT.valid" [class.is-invalid]="RearViewMirorLT.invalid && RearViewMirorLT.touched">
+              <option *ngFor="let name of RearViewMirrorLT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RearViewMirorLT.touched && RearViewMirorLT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Rear View Mirror(RT)<b class="text-danger" >*</b></label>
+              <select  class="form-control"name="RearViewMirrorRT" id="RearViewMirrorRT" [(ngModel)]
+              ="user.RearViewMirrorRT" required #RearViewMirorRT="ngModel" [class.is-valid]="RearViewMirorRT.valid" [class.is-invalid]="RearViewMirorRT.invalid && RearViewMirorRT.touched">
+              <option *ngFor="let name of RearViewMirrorRT1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RearViewMirorRT.touched && RearViewMirorRT.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Rim<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="Rim" id="Rim" [(ngModel)]
+              ="user.Rim" required #Rm="ngModel" [class.is-valid]="Rm.valid" [class.is-invalid]="Rm.invalid && Rm.touched">
+              <option *ngFor="let name of Rim1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="Rm.touched && Rm.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    
+    <div class="row">
+      <div class=col-md-12>
+           <label>Colour</label>
+              <input type="text" class="form-control" name="Colour"  [(ngModel)] ="user.Colour">
+      </div>
+    </div>
+
+    
+    <div class="row">
+      <div class=col-md-12>
+           <label>Odometer Reading</label>
+              <input type="text" class="form-control" name="OdometerReading"  [(ngModel)] ="user.OdometerReading">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>R.C Verified<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RCVerified" id="RCVerified" [(ngModel)]
+              ="user.RCVerified" required #RCVrifd="ngModel" [class.is-valid]="RCVrifd.valid" [class.is-invalid]="RCVrifd.invalid && RCVrifd.touched">
+              <option *ngFor="let name of RCVerified1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RCVrifd.touched && RCVrifd.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Fuel Used<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FuelUsed" id="FuelUsed" [(ngModel)]
+              ="user.FuelUsed" required #FuelUsd="ngModel" [class.is-valid]="FuelUsd.valid" [class.is-invalid]="FuelUsd.invalid && FuelUsd.touched">
+              <option *ngFor="let name of FuelUsed1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="FuelUsd.touched && FuelUsd.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Stereo / Make</label>
+              <input type="text" class="form-control" name="StereoMake"  [(ngModel)] ="user.StereoMake">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>CD Changer / Make</label>
+              <input type="text" class="form-control" name="CDChangerMake"  [(ngModel)] ="user.CDChangerMake">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Any Other</label>
+              <input type="text" class="form-control" name="AnyOther"  [(ngModel)] ="user.AnyOther">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Seat Covers<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="SeatCovers" id="SeatCovers" [(ngModel)]
+              ="user.SeatCovers" required #SeatCovr="ngModel" [class.is-valid]="SeatCovr.valid" [class.is-invalid]="SeatCovr.invalid && SeatCovr.touched">
+              <option *ngFor="let name of SeatCovers1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="SeatCovr.touched && SeatCovr.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Centre Lock<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="CentreLock" id="CentreLock" [(ngModel)]
+              ="user.CentreLock" required #CntrLok="ngModel" [class.is-valid]="CntrLok.valid" [class.is-invalid]="CntrLok.invalid && CntrLok.touched">
+              <option *ngFor="let name of CentreLock1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="CntrLok.touched && CntrLok.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Gear Locking<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="GearLocking" id="GearLocking" [(ngModel)]
+              ="user.GearLocking" required #GearLok="ngModel" [class.is-valid]="GearLok.valid" [class.is-invalid]="GearLok.invalid && GearLok.touched">
+              <option *ngFor="let name of GearLocking1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="GearLok.touched && GearLok.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Any Other</label>
+              <input type="text" class="form-control" name="AnyOther"  [(ngModel)] ="user.AnyOther">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Front w/s Glass(Laminated)<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="FrontwsGlassLaminated" id="FrontwsGlassLaminated" [(ngModel)]
+              ="user.FrontwsGlassLaminated" required #FrontwsGlasLaminatd="ngModel" [class.is-valid]="FrontwsGlasLaminatd.valid" [class.is-invalid]="FrontwsGlasLaminatd.invalid && FrontwsGlasLaminatd.touched">
+              <option *ngFor="let name of FrontwsGlassLaminated1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="FrontwsGlasLaminatd.touched && FrontwsGlasLaminatd.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Left Front Door Glass<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LeftFrontDoorGlass" id="LeftFrontDoorGlass" [(ngModel)]
+              ="user.LeftFrontDoorGlass" required #LeftFrontDorGlas="ngModel" [class.is-valid]="LeftFrontDorGlas.valid" [class.is-invalid]="LeftFrontDorGlas.invalid && LeftFrontDorGlas.touched">
+              <option *ngFor="let name of LeftFrontDoorGlass1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LeftFrontDorGlas.touched && LeftFrontDorGlas.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Left Rear Door Glass<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="LeftRearDoorGlass" id="LeftRearDoorGlass" [(ngModel)]
+              ="user.LeftRearDoorGlass" required #LeftRearDorGlas="ngModel" [class.is-valid]="LeftRearDorGlas.valid" [class.is-invalid]="LeftRearDorGlas.invalid && LeftRearDorGlas.touched">
+              <option *ngFor="let name of LeftRearDoorGlass1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="LeftRearDorGlas.touched && LeftRearDorGlas.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Right Front Door Glass<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RightFrontDoorGlass" id="RightFrontDoorGlass" [(ngModel)]
+              ="user.RightFrontDoorGlass" required #RightFrntDorGlas="ngModel" [class.is-valid]="RightFrntDorGlas.valid" [class.is-invalid]="RightFrntDorGlas.invalid && RightFrntDorGlas.touched">
+              <option *ngFor="let name of RightFrontDoorGlass1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RightFrntDorGlas.touched && RightFrntDorGlas.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Right Rear Door Glass<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="RightRearDoorGlass" id="RightRearDoorGlass" [(ngModel)]
+              ="user.RightRearDoorGlass" required #RightRearDorGlas="ngModel" [class.is-valid]="RightRearDorGlas.valid" [class.is-invalid]="RightRearDorGlas.invalid && RightRearDorGlas.touched">
+              <option *ngFor="let name of RightRearDoorGlass1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="RightRearDorGlas.touched && RightRearDorGlas.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Back Glass<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="BackGlass" id="BackGlass" [(ngModel)]
+              ="user.BackGlass" required #BakGls="ngModel" [class.is-valid]="BakGls.valid" [class.is-invalid]="BakGls.invalid && BakGls.touched">
+              <option *ngFor="let name of BackGlass1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="BakGls.touched && BakGls.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Tyres<b class="text-danger" >*</b></label>
+              <select  class="form-control" name="Tyres" id="Tyres" [(ngModel)]
+              ="user.Tyres" required #Tyrs="ngModel" [class.is-valid]="Tyrs.valid" [class.is-invalid]="Tyrs.invalid && Tyrs.touched">
+              <option *ngFor="let name of Tyres1" value="{{name.ID}}">{{name.Name}} </option>
+
+              </select>
+              <div *ngIf="Tyrs.touched && Tyrs.invalid">
+                <small class="text-danger">this field  is Required</small>
+            </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RH Front Tyre Make<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control" name="RHFrontTyreMake" [(ngModel)]="user.RHFrontTyreMake">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RH Front Tyre DOT No.<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="RHFrontTyreDOTNo" [(ngModel)]="user.RHFrontTyreDOTNo">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RH Rear Tyre Make<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="RHRearTyreMake" [(ngModel)]="user.RHRearTyreMake" >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>RH Rear Tyre DOT No.<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="RHRearTyreDOTNo" [(ngModel)]="user.RHRearTyreDOTNo">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LH Front Tyre Make<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="LHFrontTyreMake" [(ngModel)]="user.LHFrontTyreMake">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LH Front Tyre DOT No.<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="LHFrontTyreDOTNo" [(ngModel)]="user.LHFrontTyreDOTNo">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LH Rear Tyre Make<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="LHRearTyreMake" [(ngModel)]="user.LHRearTyreMake">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>LH Rear Tyre DOT No.<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="LHRearTyreDOTNo" [(ngModel)]="user.LHRearTyreDOTNo">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Stepney Type Make<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="StepneyTypeMake" [(ngModel)]="user.StepneyTypeMake">
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Stepney Type DOT No.<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="StepneyTypeDOTNo" [(ngModel)]="user.StepneyTypeDOTNo">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Market value<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="Marketvalue" [(ngModel)]="user.Marketvalue">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Vehicle Remarks<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="VehicleRemarks" [(ngModel)]="user.VehicleRemarks">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>QC Remarks<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="QCRemarks" [(ngModel)]="user.QCRemarks">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>Survey Completed On<b class="text-danger" >*</b></label>
+              <input type="text" class="form-control"  name="SurveyCompletedOn" [(ngModel)]="user.SurveyCompletedOn">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>QC Hold Reason<b class="text-danger" >*</b></label>
+              <textarea type="text" class="form-control"  name="QCHoldReason" [(ngModel)]="user.QCHoldReason"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=col-md-12>
+           <label>QC Hold Remarks<b class="text-danger" >*</b></label>
+              <textarea type="text" class="form-control"  name="QCHoldRemarks" [(ngModel)]="user.QCHoldRemarks"></textarea>
+      </div>
+    </div>
+
+
+
+    <div class="row mt-2">
+      <div class="form-group mt-3">
+          <button class="btn btn-success" (click)="QcStatusUpdate('QC Hold')"   style="margin-left: 30px">QC Hold</button>
+      </div>
+      
+      <div class="form-group mt-3">
+        <button class="btn btn-success" (click)="QcStatusUpdate('QC Done')"   style="margin-left: 30px">QC Done</button>
+    </div>
+
+  </div>
+  
+  <!-- </perfect-scrollbar> -->
+      </div>
+     </div>
+  
+<!-- right side card start -->
+    <div class="col-lg-8 ">
+     <div class="card" style="border:thin;background-color: #c2d6d6; padding: 12px;">
+      <div class="row mt-2">
+        <div class="col-lg-3 ">
+            <label>Uploaded Images</label>
+        </div>
+
+        <ul class="nav nav-pills" role="tablist"  >
+          <li class="nav-item" style="background-color:#3333ff" >
+            <a class="nav-link" href="" (click)="showhide()" data-toggle="pill" ><i class="fa fa-upload" aria-hidden="true"></i>Upload Images</a>
+        </li>
+
+        <li class="nav-item" style="background-color:#00b33c">
+          <a class="nav-link " data-toggle="pill" ><i class="fa fa-download" aria-hidden="true"></i>Download All Images</a>
+      </li>
+
+      <li class="nav-item" style="background-color:#ff3300">
+        <a class="nav-link " data-toggle="pill" ><i class="fa fa-trash" aria-hidden="true"></i>Delete All Images</a>
+     </li>
+        </ul>
+      </div>
+      <hr>
+
+
+      <div class="row" >
+       <form #VehicleImageForm="ngForm">
+        <div class="col-md-12" *ngIf="isHide">
+          <div class="row mt-2">
+                <div class="col-lg-12">
+                     <label> Select Image Type <b class="text-danger" >*</b></label>
+                 <select  class="form-control"name="ImageType" id="ImageType" [(ngModel)]
+                 ="VehicleImages.ImageType" required #ImgType="ngModel" [class.is-valid]="ImgType.valid" [class.is-invalid]="ImgType.invalid && ImgType.touched">
+                 <option value="">Select Image Type</option>
+                 <option *ngFor="let ImageType of ImageType1" value="{{ImageType.ImageTable}}">{{ImageType.ImageTable}} </option>
+   
+                 </select>
+                 <div *ngIf="ImgType.touched && ImgType.invalid">
+                   <small class="text-danger">this field  is Required</small>
+                 </div>
+               </div>
+           </div>
+      </div>
+
+        <div class="col-md-12" >
+           <div class="row mt-2">
+                <div class="col-lg-12" *ngIf="isHide">
+                <input type="file" class="form-control" #Image  (change)="uploadImage($event)" name="ProfilePicture" multiple>
+              </div>
+           </div>
+
+          <div class="row mt-2">
+            <div class="form-group mt-3">
+                <button class="btn btn-primary" type="submit" (click)="saveImage(VehicleImageForm)"  style="margin-left: 30px">Upload Images</button>
+            </div>
+
+        </div>
+       </div>
+      </form>
+    </div>
+
+     <div class="container">
+      <div class="row mt-2">
+          <div class="col-lg-12 " *ngFor = "let img of images">
+            <p>{{img.ImageType}}</p>
+            <img src ="{{this.env.apiUrl}}{{img.ImageURL}}" width="750"  height="400"> 
+            
+            <div style="height:0px;overflow:hidden">
+              <input type="file" id="fileInput" (change)="uploadImage($event)" />
+           </div>
+           <button type="button" class="btn1" (click)="chooseFile();"> <i class="fas fa-plus"></i>&nbsp;Add</button>
+            
+          
+            
+            <!-- <input type="file" id="fileLoader" name="files" title="Load File" />
+            <i class="fas fa-plus"></i> <input type="button" id="btnOpenFileDialog"   value = "Add" onclick="openfileDialog();" />
+
+            <button class="btn"><i class="fas fa-plus"></i> Add</button> -->
+
+
+          </div>
+       </div><br>
+     </div><br><br>
+     
+
+      </div>
+    </div>
+</div>
+ 
+</form>
+</div>
+
+

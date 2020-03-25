@@ -1,0 +1,33 @@
+/* #sidebar{
+  background:red;
+  width: 100px;
+  float:left;
+} */
+
+/* .side-nav-logo{
+  background-color: white !important;
+  border-bottom: white !important;
+} */
+
+
+.side-nav-logo{
+  background-color: white !important;
+  border-bottom: white !important;
+}
+.side-nav-menu{
+  background-color: #192965;
+  color:white !important;
+}
+.title{
+  color:white;
+  
+}
+.ti{
+  color: white;
+}
+.header-container{
+  background-color: #192965;
+}
+ul li a{
+  color:white;
+}
